@@ -19,7 +19,7 @@ func _physics_process(delta):
 		look_at(get_global_mouse_position())
 	velocity = (final_mouse - final_pos).normalized() * diff_sec * speed
 	diff_sec = move_toward(diff_sec, 0.0, 0.8 * delta)
-	print(diff_sec)
+	#print(diff_sec)
 	move_and_slide()
 
 func _input(event):
