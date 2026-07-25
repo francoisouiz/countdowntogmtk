@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://be8qbmt0fe144"]
+[gd_scene format=3 uid="uid://fyyoe5vf3xm1"]
 
 [ext_resource type="Texture2D" uid="uid://4l3ejvdjdsoi" path="res://assets/temp_icons/knight.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://c3ubxpp10k6x6" path="res://scripts/player.gd" id="1_g2els"]
@@ -74,3 +74,7 @@ frame_progress = 0.7154767
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1069524829]
 shape = SubResource("CircleShape2D_k6aki")
+
+[node name="Timer" type="Timer" parent="." unique_id=367206767]
+one_shot = true
+autostart = true

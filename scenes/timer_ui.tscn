@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bgt7phb7ag8of"]
+
+[ext_resource type="Script" uid="uid://dw6d1jgfghj6m" path="res://scripts/timer_ui.gd" id="1_dseqt"]
+[ext_resource type="FontFile" uid="uid://c0t24puksbmdn" path="res://assets/Dracula.ttf" id="2_35b8j"]
+[ext_resource type="Texture2D" uid="uid://dqfqf0swd3eto" path="res://assets/temp_icons/hourglass.png" id="2_q6nsa"]
+
+[node name="Timer_UI" type="Control" unique_id=1952476844]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+script = ExtResource("1_dseqt")
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1964624678]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -53.0
+offset_right = 53.0
+offset_bottom = 101.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=204463742]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=435583678]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("2_q6nsa")
+expand_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer" unique_id=1102591109]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer" unique_id=1360886870]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_35b8j")
+theme_override_font_sizes/font_size = 70
+text = "100"
+horizontal_alignment = 1

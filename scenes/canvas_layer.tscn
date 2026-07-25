@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://brl0lvtnuvu0u"]
+
+[ext_resource type="PackedScene" uid="uid://bgt7phb7ag8of" path="res://scenes/timer_ui.tscn" id="1_c4rma"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=543282367]
+
+[node name="Timer_UI" parent="." unique_id=1952476844 instance=ExtResource("1_c4rma")]
