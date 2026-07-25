@@ -1,30 +1,22 @@
-extends AnimatableBody2D
+extends CharacterBody2D
 class_name Enemy
 
 @onready var shooting_cooldown: Timer = $ShootingCooldown
+@onready var player: CharacterBody2D = get_node("%Player")
 
-var projectile_scene = preload("res://scenes/projectile.tscn")
+var SPEED = 50.0
 
-func shoot() -> void:
-	var proj = projectile_scene.instantiate()
-	proj.set_velocity_components(Vector2(-1, 0))
-	proj.position = position
-	
-	get_node("/root/Root/EnemyProjectiles").add_child(proj)
-	
-	shooting_cooldown.start()
+func move(delta) -> void:
+	if player:
+		var components = (player.position-position).normalized()
+		
+		velocity = SPEED * components
+		move_and_slide()
 
 func die() -> void:
 	queue_free()
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	shooting_cooldown.start()
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	move(delta)
 	pass
-
-func _on_shooting_cooldown_timeout() -> void:
-	pass
-	#shoot()

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dtj2j7id5rrgf"]
 
 [ext_resource type="Texture2D" uid="uid://ceyfirorvvyc7" path="res://assets/temp_icons/slime_purple.png" id="1_3i4hm"]
-[ext_resource type="Script" uid="uid://bcet7ypa3gwlv" path="res://scenes/basic_enemy.gd" id="1_md22f"]
+[ext_resource type="Script" uid="uid://bcet7ypa3gwlv" path="res://scripts/basic_enemy.gd" id="1_md22f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md22f"]
 atlas = ExtResource("1_3i4hm")
@@ -42,19 +42,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k6aki"]
 size = Vector2(8, 10)
 
-[node name="BasicEnemy" type="AnimatableBody2D" unique_id=574819004]
+[node name="BasicEnemy" type="CharacterBody2D" unique_id=1807508245]
 script = ExtResource("1_md22f")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1429650618]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=437207906]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_k6aki")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=999539691]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=234008271]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_k6aki")
-
-[node name="ShootingCooldown" type="Timer" parent="." unique_id=446182499]
-wait_time = 2.0
-
-[connection signal="timeout" from="ShootingCooldown" to="." method="_on_shooting_cooldown_timeout"]
