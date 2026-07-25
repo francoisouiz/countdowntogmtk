@@ -19,6 +19,10 @@ run/main_scene="res://scenes/root.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+RoomChangeGlobal="*uid://qo7t24eimh7y"
+
 [input]
 
 move_up_key={

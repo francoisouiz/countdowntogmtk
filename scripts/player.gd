@@ -7,6 +7,12 @@ enum Vampire_Forms {HUMAN, BAT}
 @export var current_form: Vampire_Forms = Vampire_Forms.HUMAN
 @export var SPEED: float = 150.0
 
+func _ready() -> void:
+	add_to_group("player")
+	if RoomChangeGlobal.activate:
+		global_position = RoomChangeGlobal.player_pos
+		RoomChangeGlobal.activate = false
+
 func move_player() -> void:
 	var vertical_direction = Input.get_axis("move_up_key", "move_down_key")
 	if vertical_direction:

@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=4 uid="uid://cyrntky2g0wjs"]
+[gd_scene format=4 uid="uid://dpb31xovj2vum"]
 
-[ext_resource type="PackedScene" uid="uid://dtjl3wyretbj8" path="res://scenes/level.tscn" id="1_j5px3"]
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_j5px3"]
+[ext_resource type="PackedScene" uid="uid://dtjl3wyretbj8" path="res://scenes/level.tscn" id="1_lrqlo"]
 [ext_resource type="Texture2D" uid="uid://w6un1tp20y2e" path="res://assets/temp_icons/world_tileset.png" id="2_twpsu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lrqlo"]
@@ -132,7 +132,7 @@ sources/0 = SubResource("TileSetAtlasSource_lrqlo")
 
 [node name="Root" type="Node2D" unique_id=1451838764]
 
-[node name="Level" parent="." instance=ExtResource("1_j5px3")]
+[node name="Level" parent="." unique_id=1772488304 instance=ExtResource("1_lrqlo")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1937120604]
 position = Vector2(1, 0)
@@ -146,4 +146,3 @@ SPEED = null
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=658414016]
 position = Vector2(0, -6)
 zoom = Vector2(4, 4)
-
