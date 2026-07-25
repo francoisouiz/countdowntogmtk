@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://be8qbmt0fe144"]
+[gd_scene format=3 uid="uid://be8qbmt0fe144"]
 
 [ext_resource type="Texture2D" uid="uid://4l3ejvdjdsoi" path="res://assets/temp_icons/knight.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://c3ubxpp10k6x6" path="res://scripts/player.gd" id="1_g2els"]
@@ -65,7 +65,7 @@ radius = 5.0
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=729284754]
-position = Vector2(0, -12)
+position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_k6aki")
 animation = &"fly"
 autoplay = "idle"
@@ -73,5 +73,4 @@ frame = 1
 frame_progress = 0.7154767
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1069524829]
-position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_k6aki")

@@ -11,6 +11,14 @@ var press_time = 0
 var final_mouse = Vector2()
 var final_pos = Vector2()
 
+var projectile_scene = preload("res://scenes/projectile.tscn")
+
+func _ready() -> void:
+	add_to_group("player")
+	if RoomChangeGlobal.activate:
+		global_position = RoomChangeGlobal.player_pos
+		RoomChangeGlobal.activate = false
+
 func _physics_process(delta):
 	if current_form == Vampire_Forms.HUMAN:
 		shoot()
@@ -19,7 +27,7 @@ func _physics_process(delta):
 		look_at(get_global_mouse_position())
 	velocity = (final_mouse - final_pos).normalized() * diff_sec * speed
 	diff_sec = move_toward(diff_sec, 0.0, 0.8 * delta)
-	print(diff_sec)
+	#print(diff_sec)
 	move_and_slide()
 
 func _input(event):
@@ -32,14 +40,6 @@ func _input(event):
 		diff_sec = diff_ms / 1000.0
 		final_pos = global_position
 		final_mouse = get_global_mouse_position()
-
-var projectile_scene = preload("res://scenes/projectile.tscn")
-
-func _ready() -> void:
-	add_to_group("player")
-	if RoomChangeGlobal.activate:
-		global_position = RoomChangeGlobal.player_pos
-		RoomChangeGlobal.activate = false
 
 func get_relative_mouse_position() -> Vector2:
 	var mouse_coordinates: Vector2 = get_global_mouse_position()

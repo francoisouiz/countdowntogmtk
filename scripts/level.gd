@@ -4,6 +4,8 @@ extends Node2D
 @export var _number_of_rooms: int = 10
 
 @onready var start_room = preload("res://scenes/rooms/start_room.tscn")
+@onready var normal_room = preload("res://scenes/rooms/normal_room.tscn")
+@onready var player = preload("res://scenes/player.tscn")
 
 enum RoomType { START, NORMAL, SPECIAL }
 
@@ -70,6 +72,7 @@ func _create_rooms(current: Vector2i, length: int) -> bool:
 			rooms[current.x][current.y][direction] = true
 			current += direction
 			rooms[current.x][current.y] = {"type": RoomType.NORMAL}
+			rooms[current.x][current.y][-direction] = true
 			if _create_rooms(current, length - 1):
 				return true
 			else:
@@ -109,12 +112,26 @@ func _instantiate_rooms() -> void:
 		for j in _dimensions.y:
 			if rooms[i][j] == null:
 				continue
-			var instance
+			var room_instance
+			var player_instance
 			match rooms[i][j]["type"]:
-				RoomType.START: instance = start_room.instantiate()
-				RoomType.NORMAL: continue
+				RoomType.START: 
+					room_instance = start_room.instantiate()
+					player_instance = player.instantiate()
+					player_instance.position = (Vector2(11 * i, 11 * j) + Vector2(Room.DIMENSIONS) / 2) * 16
+					player_instance.z_index = 10
+					
+				RoomType.NORMAL: room_instance = normal_room.instantiate()
 				RoomType.SPECIAL: continue
 				_: continue
-				
-			instance.position = Vector2i(16 * 16 * i, 16 * 8 * j)
-			add_child(instance)
+			
+			for direction in [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]:
+				if direction in rooms[i][j]:
+					room_instance.door_directions[direction] = rooms[i][j][direction]
+			
+			room_instance.position = Vector2i(16 * 11 * i, 16 * 11 * j)
+			add_child(room_instance)
+			var camera = Camera2D.new()
+			add_child(camera)
+			if rooms[i][j]["type"] == RoomType.START:
+				add_child(player_instance)

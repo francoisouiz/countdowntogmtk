@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://ctai6blx00v2j"]
 
 [ext_resource type="Script" uid="uid://b7ymlr8lcv8fh" path="res://scripts/door.gd" id="1_hpvv5"]
+[ext_resource type="Texture2D" uid="uid://c75rxdlq2txbg" path="res://icon.svg" id="2_uvdjg"]
 
 [node name="Door" type="Area2D" unique_id=408957288]
 script = ExtResource("1_hpvv5")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=314960269]
+position = Vector2(3.5, 3.5)
+scale = Vector2(0.039062496, 0.0390625)
+texture = ExtResource("2_uvdjg")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

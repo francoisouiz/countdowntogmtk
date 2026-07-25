@@ -1,8 +1,8 @@
-[gd_scene format=4 uid="uid://bbwao7vidkxvx"]
+[gd_scene format=4 uid="uid://fxe6yqhxrrr2"]
 
-[ext_resource type="TileSet" uid="uid://cmq5wy5vmdsbi" path="res://assets/temp_icons/TempTileset.res" id="1_f8a4q"]
-[ext_resource type="Script" uid="uid://lueu0lcodtf7" path="res://scripts/room.gd" id="1_qr66m"]
-[ext_resource type="PackedScene" uid="uid://ctai6blx00v2j" path="res://scenes/door.tscn" id="3_qr66m"]
+[ext_resource type="Script" uid="uid://lueu0lcodtf7" path="res://scripts/room.gd" id="1_wn154"]
+[ext_resource type="TileSet" uid="uid://cmq5wy5vmdsbi" path="res://assets/temp_icons/TempTileset.res" id="2_xiuev"]
+[ext_resource type="PackedScene" uid="uid://ctai6blx00v2j" path="res://scenes/door.tscn" id="3_q3p62"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m2g58"]
 size = Vector2(18, 48)
@@ -16,18 +16,18 @@ size = Vector2(48, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdrft"]
 size = Vector2(48, 18)
 
-[node name="StartRoom" type="Node2D" unique_id=1831833429]
-script = ExtResource("1_qr66m")
+[node name="NormalRoom" type="Node2D" unique_id=1831833429]
+script = ExtResource("1_wn154")
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=2090668736]
 tile_map_data = PackedByteArray("AAABAAEAAAAGAAAAAAABAAIAAAAGAAEAAAABAAMAAAAGAAIAAAACAAEAAAAHAAAAAAACAAIAAAAHAAEAAAACAAMAAAAHAAIAAAADAAEAAAAIAAAAAAADAAIAAAAIAAEAAAADAAMAAAAIAAIAAAAEAAEAAAAGAAAAAAAEAAIAAAAGAAEAAAAEAAMAAAAGAAIAAAAFAAEAAAAHAAAAAAAFAAIAAAAHAAEAAAAFAAMAAAAHAAIAAAAGAAEAAAAIAAAAAAAGAAIAAAAIAAEAAAAGAAMAAAAIAAIAAAABAAQAAAAGAAAAAAABAAUAAAAGAAEAAAABAAYAAAAGAAIAAAACAAQAAAAHAAAAAAACAAUAAAAHAAEAAAACAAYAAAAHAAIAAAADAAQAAAAIAAAAAAADAAUAAAAIAAEAAAADAAYAAAAIAAIAAAAEAAQAAAAGAAAAAAAEAAUAAAAGAAEAAAAEAAYAAAAGAAIAAAAFAAQAAAAHAAAAAAAFAAUAAAAHAAEAAAAFAAYAAAAHAAIAAAAGAAQAAAAIAAAAAAAGAAUAAAAIAAEAAAAGAAYAAAAIAAIAAAAHAAEAAAAGAAAAAAAHAAIAAAAGAAEAAAAHAAMAAAAGAAIAAAAIAAEAAAAHAAAAAAAIAAIAAAAHAAEAAAAIAAMAAAAHAAIAAAAJAAEAAAAIAAAAAAAJAAIAAAAIAAEAAAAJAAMAAAAIAAIAAAAHAAQAAAAGAAAAAAAHAAUAAAAGAAEAAAAHAAYAAAAGAAIAAAAIAAQAAAAHAAAAAAAIAAUAAAAHAAEAAAAIAAYAAAAHAAIAAAAJAAQAAAAIAAAAAAAJAAUAAAAIAAEAAAAJAAYAAAAIAAIAAAABAAcAAAAGAAAAAAABAAgAAAAGAAEAAAABAAkAAAAGAAIAAAACAAcAAAAHAAAAAAACAAgAAAAHAAEAAAACAAkAAAAHAAIAAAADAAcAAAAIAAAAAAADAAgAAAAIAAEAAAADAAkAAAAIAAIAAAAEAAcAAAAGAAAAAAAEAAgAAAAGAAEAAAAEAAkAAAAGAAIAAAAFAAcAAAAHAAAAAAAFAAgAAAAHAAEAAAAFAAkAAAAHAAIAAAAGAAcAAAAIAAAAAAAGAAgAAAAIAAEAAAAGAAkAAAAIAAIAAAAHAAcAAAAGAAAAAAAHAAgAAAAGAAEAAAAHAAkAAAAGAAIAAAAIAAcAAAAHAAAAAAAIAAgAAAAHAAEAAAAIAAkAAAAHAAIAAAAJAAcAAAAIAAAAAAAJAAgAAAAIAAEAAAAJAAkAAAAIAAIAAAA=")
-tile_set = ExtResource("1_f8a4q")
+tile_set = ExtResource("2_xiuev")
 
 [node name="Walls" type="TileMapLayer" parent="." unique_id=1005089133]
 tile_map_data = PackedByteArray("AAABAAAAAAABAAAAAAACAAAAAAACAAAAAAADAAAAAAADAAAAAAAEAAAAAAAEAAAAAAAFAAAAAAACAAAAAAAGAAAAAAADAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAADAAAAAAAKAAEAAAAFAAEAAAAKAAIAAAAFAAIAAAAKAAMAAAAFAAMAAAAKAAcAAAAFAAEAAAAKAAgAAAAFAAIAAAAKAAkAAAAFAAMAAAAKAAYAAAAFAAIAAAAKAAUAAAAFAAMAAAAKAAQAAAAFAAMAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAMAAAAAAAQAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAYAAAAAAAEAAAAAAAcAAAAAAAEAAAAAAAgAAAAAAAMAAAAAAAkAAAAAAAMAAAAKAAoAAAAFAAQAAAAAAAoAAAAAAAQAAAAKAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAABAAoAAAABAAQAAAACAAoAAAACAAQAAAADAAoAAAADAAQAAAAEAAoAAAAEAAQAAAAFAAoAAAABAAQAAAAGAAoAAAACAAQAAAAHAAoAAAADAAQAAAAJAAoAAAADAAQAAAAIAAoAAAADAAQAAAA=")
-tile_set = ExtResource("1_f8a4q")
+tile_set = ExtResource("2_xiuev")
 
-[node name="DoorLeft" parent="." unique_id=408957288 instance=ExtResource("3_qr66m")]
+[node name="DoorLeft" parent="." unique_id=408957288 instance=ExtResource("3_q3p62")]
 unique_name_in_owner = true
 position = Vector2(0, 64)
 
@@ -35,7 +35,7 @@ position = Vector2(0, 64)
 position = Vector2(9, 24)
 shape = SubResource("RectangleShape2D_m2g58")
 
-[node name="DoorRight" parent="." unique_id=286257101 instance=ExtResource("3_qr66m")]
+[node name="DoorRight" parent="." unique_id=286257101 instance=ExtResource("3_q3p62")]
 unique_name_in_owner = true
 position = Vector2(158, 64)
 
@@ -43,7 +43,7 @@ position = Vector2(158, 64)
 position = Vector2(9, 24)
 shape = SubResource("RectangleShape2D_8ykry")
 
-[node name="DoorUp" parent="." unique_id=1976363540 instance=ExtResource("3_qr66m")]
+[node name="DoorUp" parent="." unique_id=1976363540 instance=ExtResource("3_q3p62")]
 unique_name_in_owner = true
 position = Vector2(64, 0)
 
@@ -51,7 +51,7 @@ position = Vector2(64, 0)
 position = Vector2(24, 9)
 shape = SubResource("RectangleShape2D_sq8v1")
 
-[node name="DoorDown" parent="." unique_id=2039655850 instance=ExtResource("3_qr66m")]
+[node name="DoorDown" parent="." unique_id=2039655850 instance=ExtResource("3_q3p62")]
 unique_name_in_owner = true
 position = Vector2(64, 158)
 
