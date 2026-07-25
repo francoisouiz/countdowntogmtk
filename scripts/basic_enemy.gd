@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 
 @onready var player: CharacterBody2D = get_node("%Player")
+var blood_drop_scene = preload("res://scenes/blood_drop.tscn")
 
 var SPEED = 30.0
 
@@ -13,6 +14,10 @@ func move(delta) -> void:
 		move_and_slide()
 
 func die() -> void:
+	var drop = blood_drop_scene.instantiate()
+	drop.position = position
+	get_node("/root/Root/BloodDrops").call_deferred("add_child", drop)
+	
 	queue_free()
 
 func kill(player_node: Node2D) -> void:
