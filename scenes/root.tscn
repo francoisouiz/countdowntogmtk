@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_j5px3"]
 [ext_resource type="Texture2D" uid="uid://w6un1tp20y2e" path="res://assets/temp_icons/world_tileset.png" id="2_twpsu"]
+[ext_resource type="PackedScene" uid="uid://dtj2j7id5rrgf" path="res://scenes/basic_enemy.tscn" id="3_lrqlo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lrqlo"]
 texture = ExtResource("2_twpsu")
@@ -138,8 +139,14 @@ tile_set = SubResource("TileSet_72ghi")
 
 [node name="Player" parent="." unique_id=1239870288 instance=ExtResource("1_j5px3")]
 position = Vector2(1, 0)
-SPEED = null
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=658414016]
 position = Vector2(0, -6)
 zoom = Vector2(4, 4)
+
+[node name="EnemyProjectiles" type="Node" parent="." unique_id=272294180]
+
+[node name="PlayerProjectiles" type="Node" parent="." unique_id=1716505557]
+
+[node name="BasicEnemy" parent="." unique_id=574819004 instance=ExtResource("3_lrqlo")]
+position = Vector2(-55, -5)
