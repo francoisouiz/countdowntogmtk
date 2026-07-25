@@ -16,6 +16,9 @@ size = Vector2(48, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdrft"]
 size = Vector2(48, 18)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kfp2"]
+size = Vector2(152, 152)
+
 [node name="NormalRoom" type="Node2D" unique_id=1831833429]
 script = ExtResource("1_wn154")
 
@@ -58,3 +61,12 @@ position = Vector2(64, 158)
 [node name="Hitbox" type="CollisionShape2D" parent="DoorDown" unique_id=1423186603]
 position = Vector2(24, 9)
 shape = SubResource("RectangleShape2D_sdrft")
+
+[node name="RoomArea" type="Area2D" parent="." unique_id=154012041]
+unique_name_in_owner = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="RoomArea" unique_id=490916597]
+position = Vector2(88, 88)
+shape = SubResource("RectangleShape2D_4kfp2")
+
+[connection signal="body_entered" from="RoomArea" to="." method="_on_room_area_body_entered"]

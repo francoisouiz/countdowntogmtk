@@ -1,6 +1,7 @@
 extends Node2D
 
-@export var _dimensions: Vector2i = Vector2i(7, 5)
+const DIMENSIONS: Vector2i = Vector2i(7, 5)
+
 @export var _number_of_rooms: int = 10
 
 @onready var start_room = preload("res://scenes/rooms/start_room.tscn")
@@ -10,7 +11,7 @@ extends Node2D
 enum RoomType { START, NORMAL, SPECIAL }
 
 var rooms: Array[Array] = []
-var start: Vector2i = _dimensions / 2
+var start: Vector2i = DIMENSIONS / 2
 
 func _ready() -> void:
 	_initialize_rooms()
@@ -21,9 +22,9 @@ func _ready() -> void:
 
 func _print_level() -> void:
 	"""for debugging"""
-	for j in _dimensions.y:
+	for j in DIMENSIONS.y:
 		var to_print = ""
-		for i in _dimensions.x:
+		for i in DIMENSIONS.x:
 			if rooms[i][j] == null:
 				to_print += "[_] "
 			else:
@@ -33,9 +34,9 @@ func _print_level() -> void:
 					_: to_print += "[X] "
 		print(to_print)
 		
-	for j in _dimensions.y:
+	for j in DIMENSIONS.y:
 		var to_print = ""
-		for i in _dimensions.x:
+		for i in DIMENSIONS.x:
 			if rooms[i][j] == null:
 				to_print += "[____] "
 			else:
@@ -49,9 +50,9 @@ func _print_level() -> void:
 				to_print += "] "
 		print(to_print)
 func _initialize_rooms() -> void:
-	for i in _dimensions.x:
+	for i in DIMENSIONS.x:
 		rooms.append([])
-		for j in _dimensions.y:
+		for j in DIMENSIONS.y:
 			rooms[i].append(null)
 	
 	rooms[start.x][start.y] = {"type": RoomType.START}
@@ -84,16 +85,16 @@ func _create_rooms(current: Vector2i, length: int) -> bool:
 	return false
 
 func _inbounds(coord: Vector2i) -> bool:
-	if (coord.x >= 0 and coord.x < _dimensions.x and 
-		coord.y >= 0 and coord.y < _dimensions.y):
+	if (coord.x >= 0 and coord.x < DIMENSIONS.x and 
+		coord.y >= 0 and coord.y < DIMENSIONS.y):
 		return true
 	else:
 		return false
 
 func _set_connections() -> void:
 	"""Adds extra connections"""
-	for i in _dimensions.x:
-		for j in _dimensions.y:
+	for i in DIMENSIONS.x:
+		for j in DIMENSIONS.y:
 			var possible_directions: Array[Vector2i] = []
 			if rooms[i][j] == null: continue
 			for direction in [Vector2i.UP, Vector2i.DOWN, Vector2i.LEFT, Vector2i.RIGHT]:
@@ -108,8 +109,8 @@ func _set_connections() -> void:
 				rooms[i + extra_direction.x][j + extra_direction.y][-extra_direction] = true
 				
 func _instantiate_rooms() -> void:
-	for i in _dimensions.x:
-		for j in _dimensions.y:
+	for i in DIMENSIONS.x:
+		for j in DIMENSIONS.y:
 			if rooms[i][j] == null:
 				continue
 			var room_instance
@@ -131,7 +132,5 @@ func _instantiate_rooms() -> void:
 			
 			room_instance.position = Vector2i(16 * 11 * i, 16 * 11 * j)
 			add_child(room_instance)
-			var camera = Camera2D.new()
-			add_child(camera)
 			if rooms[i][j]["type"] == RoomType.START:
 				add_child(player_instance)
