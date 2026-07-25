@@ -1,0 +1,11 @@
+extends Control
+
+@onready var label = get_node("/root/Root/CanvasLayer/Timer_UI/MarginContainer/HBoxContainer/MarginContainer/Label")
+@onready var timer = get_node("/root/Root/Player/Timer")
+
+func _process(delta):
+	if timer:
+		label.text = str(int(timer.time_left))
+	 
+
+	

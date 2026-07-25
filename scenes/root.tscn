@@ -1,8 +1,9 @@
 [gd_scene format=4 uid="uid://cyrntky2g0wjs"]
 
-[ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_j5px3"]
+[ext_resource type="PackedScene" uid="uid://fyyoe5vf3xm1" path="res://scenes/player.tscn" id="1_j5px3"]
 [ext_resource type="Texture2D" uid="uid://w6un1tp20y2e" path="res://assets/temp_icons/world_tileset.png" id="2_twpsu"]
 [ext_resource type="PackedScene" uid="uid://dtj2j7id5rrgf" path="res://scenes/basic_enemy.tscn" id="3_lrqlo"]
+[ext_resource type="PackedScene" uid="uid://brl0lvtnuvu0u" path="res://scenes/canvas_layer.tscn" id="4_sqa0i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lrqlo"]
 texture = ExtResource("2_twpsu")
@@ -150,3 +151,5 @@ zoom = Vector2(4, 4)
 
 [node name="BasicEnemy" parent="." unique_id=574819004 instance=ExtResource("3_lrqlo")]
 position = Vector2(-55, -5)
+
+[node name="CanvasLayer" parent="." unique_id=543282367 instance=ExtResource("4_sqa0i")]
