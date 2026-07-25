@@ -4,6 +4,8 @@ class_name Player
 enum Vampire_Forms {HUMAN, BAT}
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_timer: Timer = $Timer
+@export var max_health_time: float = 5
 @export var current_form: Vampire_Forms = Vampire_Forms.HUMAN
 @export var speed = 3000
 @export var hp = 100
@@ -13,17 +15,38 @@ var press_time = 0
 var final_mouse = Vector2()
 var final_pos = Vector2()
 
+func _ready():
+	health_timer.wait_time = max_health_time
+	health_timer.start()
+
 func _physics_process(delta):
 	if current_form == Vampire_Forms.HUMAN:
 		shoot()
 	if diff_sec == 0:
 		current_form = Vampire_Forms.HUMAN
 		look_at(get_global_mouse_position())
+	if health_timer.time_left <= 0:
+		ded()
 	velocity = (final_mouse - final_pos).normalized() * diff_sec * speed
 	diff_sec = move_toward(diff_sec, 0.0, 0.8 * delta)
-	#print(diff_sec)
-	print(hp)
 	move_and_slide()
+	
+func take_damage(hp):
+	var current_left = health_timer.time_left
+	var new_time = max(0.0, current_left - hp)
+	
+	if new_time > 0:
+		health_timer.start(new_time)
+	else:
+		health_timer.stop()
+		ded()
+		
+func ded():
+	queue_free()
+		
+func add_time(hp):
+	var current_left = health_timer.time_left
+	health_timer.start(current_left + hp)
 
 func _input(event):
 	if event.is_action_pressed("charge"):
