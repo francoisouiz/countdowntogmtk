@@ -1,0 +1,6 @@
+Credit to Brackeys's youtube channel for the sprites
+https://brackeysgames.itch.io/brackeys-platformer-bundle
+
+More specifically, credit to the following for the sprites:
+- Knight	: camelot_
+- World Tileset	: Four Seasons Platformer Tileset
