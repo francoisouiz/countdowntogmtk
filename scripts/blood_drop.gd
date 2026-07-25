@@ -6,7 +6,7 @@ extends Node2D
 #@onready var player: CharacterBody2D = get_node("%Player")
 
 func pickup(player: Node2D) -> void:
-	player.hp += heal_value
+	player.add_time(heal_value)
 	queue_free()
 	
 func _on_body_entered(body: Node2D) -> void:
