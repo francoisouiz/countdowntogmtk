@@ -7,11 +7,17 @@ enum Vampire_Forms {HUMAN, BAT}
 @export var current_form: Vampire_Forms = Vampire_Forms.HUMAN
 @export var SPEED: float = 150.0
 
+var projectile_scene = preload("res://scenes/projectile.tscn")
+
 func _ready() -> void:
 	add_to_group("player")
 	if RoomChangeGlobal.activate:
 		global_position = RoomChangeGlobal.player_pos
 		RoomChangeGlobal.activate = false
+
+func get_relative_mouse_position() -> Vector2:
+	var mouse_coordinates: Vector2 = get_global_mouse_position()
+	return Vector2(mouse_coordinates.x - position.x, mouse_coordinates.y - position.y)
 
 func move_player() -> void:
 	var vertical_direction = Input.get_axis("move_up_key", "move_down_key")
@@ -30,9 +36,13 @@ func move_player() -> void:
 
 func shoot() -> void:
 	if Input.is_action_just_pressed("shoot"):
-		var mouse_coordinates: Vector2 = get_global_mouse_position()
-		print(mouse_coordinates.x, mouse_coordinates.y)
-		print("click")
+		var mouse_coordinates: Vector2 = get_relative_mouse_position().normalized()
+		var proj = projectile_scene.instantiate()
+		
+		proj.set_velocity_components(mouse_coordinates)
+		proj.position = position
+		
+		get_node("/root/Root/PlayerProjectiles").add_child(proj)
 
 func switch_form() -> void:
 	if Input.is_action_just_pressed("switch_form_key"):
