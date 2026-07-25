@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://w6un1tp20y2e" path="res://assets/temp_icons/world_tileset.png" id="2_twpsu"]
 [ext_resource type="PackedScene" uid="uid://dtj2j7id5rrgf" path="res://scenes/basic_enemy.tscn" id="3_lrqlo"]
 [ext_resource type="PackedScene" uid="uid://brl0lvtnuvu0u" path="res://scenes/canvas_layer.tscn" id="4_sqa0i"]
+[ext_resource type="PackedScene" uid="uid://b7qhgfs0xk5lk" path="res://scenes/blood_drop.tscn" id="4_sqa0i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lrqlo"]
 texture = ExtResource("2_twpsu")
@@ -139,15 +140,28 @@ tile_map_data = PackedByteArray("AAAAAP7/AAAAAAEAAAD///7/AAAAAAEAAAD/////AAAAAAE
 tile_set = SubResource("TileSet_72ghi")
 
 [node name="Player" parent="." unique_id=1239870288 instance=ExtResource("1_j5px3")]
+unique_name_in_owner = true
 position = Vector2(1, 0)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=658414016]
 position = Vector2(0, -6)
 zoom = Vector2(4, 4)
 
-[node name="EnemyProjectiles" type="Node" parent="." unique_id=272294180]
-
 [node name="PlayerProjectiles" type="Node" parent="." unique_id=1716505557]
+
+[node name="BloodDrops" type="Node" parent="." unique_id=1411445835]
+
+[node name="BloodDrop" parent="BloodDrops" unique_id=933946282 instance=ExtResource("4_sqa0i")]
+position = Vector2(77, -42)
+heal_value = null
+
+[node name="BloodDrop2" parent="BloodDrops" unique_id=1854224110 instance=ExtResource("4_sqa0i")]
+position = Vector2(75, 22)
+heal_value = null
+
+[node name="BloodDrop3" parent="BloodDrops" unique_id=71784412 instance=ExtResource("4_sqa0i")]
+position = Vector2(8, 39)
+heal_value = null
 
 [node name="BasicEnemy" parent="." unique_id=574819004 instance=ExtResource("3_lrqlo")]
 position = Vector2(-55, -5)
