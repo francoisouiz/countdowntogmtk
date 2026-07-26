@@ -1,10 +1,13 @@
 extends CharacterBody2D
-class_name Enemy
+class_name BasicEnemy
 
 @onready var player: CharacterBody2D = get_node("%Player")
 var blood_drop_scene = preload("res://scenes/blood_drop.tscn")
 
 var SPEED = 30.0
+
+func _ready() -> void:
+	add_to_group("enemy")
 
 func move(delta) -> void:
 	if player:

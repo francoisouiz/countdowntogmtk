@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dtjl3wyretbj8" path="res://scenes/level.tscn" id="1_lrqlo"]
 [ext_resource type="Texture2D" uid="uid://w6un1tp20y2e" path="res://assets/temp_icons/world_tileset.png" id="2_twpsu"]
-[ext_resource type="PackedScene" uid="uid://dtj2j7id5rrgf" path="res://scenes/basic_enemy.tscn" id="3_lrqlo"]
 [ext_resource type="PackedScene" uid="uid://b7qhgfs0xk5lk" path="res://scenes/blood_drop.tscn" id="4_sqa0i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lrqlo"]
@@ -155,8 +154,5 @@ heal_value = null
 [node name="BloodDrop3" parent="BloodDrops" unique_id=71784412 instance=ExtResource("4_sqa0i")]
 position = Vector2(8, 39)
 heal_value = null
-
-[node name="BasicEnemy" parent="." unique_id=574819004 instance=ExtResource("3_lrqlo")]
-position = Vector2(-55, -5)
 
 [node name="CanvasLayer" parent="." unique_id=543282367 instance=ExtResource("4_sqa0i")]
