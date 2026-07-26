@@ -338,4 +338,5 @@ stream = ExtResource("6_smehm")
 [node name="Shoot3" type="AudioStreamPlayer2D" parent="." unique_id=957258423]
 unique_name_in_owner = true
 stream = ExtResource("6_fjrip")
+
 [connection signal="timeout" from="IFrameCooldown" to="." method="_on_i_frame_cooldown_timeout"]
