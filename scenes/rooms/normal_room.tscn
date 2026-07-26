@@ -41,6 +41,7 @@ tile_set = ExtResource("2_wn154")
 [node name="DoorLeft" parent="." unique_id=408957288 instance=ExtResource("3_q3p62")]
 unique_name_in_owner = true
 position = Vector2(0, 64)
+collision_mask = 5
 
 [node name="DoorTexture" parent="DoorLeft" unique_id=752599772 instance=ExtResource("4_1yudk")]
 
@@ -52,6 +53,7 @@ shape = SubResource("RectangleShape2D_m2g58")
 [node name="DoorRight" parent="." unique_id=286257101 instance=ExtResource("3_q3p62")]
 unique_name_in_owner = true
 position = Vector2(160, 64)
+collision_mask = 5
 
 [node name="DoorTexture" parent="DoorRight" unique_id=1390994012 instance=ExtResource("5_jiuqo")]
 
@@ -74,6 +76,7 @@ shape = SubResource("RectangleShape2D_sq8v1")
 [node name="DoorDown" parent="." unique_id=2039655850 instance=ExtResource("3_q3p62")]
 unique_name_in_owner = true
 position = Vector2(64, 160)
+collision_mask = 5
 
 [node name="DoorTexture" parent="DoorDown" unique_id=2001313918 instance=ExtResource("7_qeuup")]
 
@@ -85,6 +88,7 @@ shape = SubResource("RectangleShape2D_sdrft")
 [node name="RoomArea" type="Area2D" parent="." unique_id=154012041]
 unique_name_in_owner = true
 visible = false
+collision_mask = 5
 
 [node name="Hitbox" type="CollisionShape2D" parent="RoomArea" unique_id=490916597]
 position = Vector2(88, 88)
