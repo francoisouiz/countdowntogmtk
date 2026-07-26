@@ -1,47 +1,24 @@
 [gd_scene format=3 uid="uid://b7qhgfs0xk5lk"]
 
 [ext_resource type="Script" uid="uid://s3ep3l7ab7pb" path="res://scripts/blood_drop.gd" id="1_2ham8"]
-[ext_resource type="Texture2D" uid="uid://ceyfirorvvyc7" path="res://assets/temp_icons/slime_purple.png" id="1_rabap"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rabap"]
-atlas = ExtResource("1_rabap")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ham8"]
-atlas = ExtResource("1_rabap")
-region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_72ghi"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rabap")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2ham8")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://dt3mk7xwuudce" path="res://assets/sprites/blood_drop.png.png" id="2_2ham8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k6aki"]
-size = Vector2(8, 7)
+size = Vector2(14, 6.5)
 
 [node name="BloodDrop" type="Node2D" unique_id=933946282]
 script = ExtResource("1_2ham8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=972769685]
-position = Vector2(0, -7)
-sprite_frames = SubResource("SpriteFrames_72ghi")
-autoplay = "default"
-frame_progress = 0.47531188
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=714246985]
+position = Vector2(0, -3)
+texture = ExtResource("2_2ham8")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1045822972]
 collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1137075584]
+position = Vector2(0, 0.25)
 shape = SubResource("RectangleShape2D_k6aki")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
