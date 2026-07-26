@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d3t5qv5c276n"]
+
+[ext_resource type="TileSet" uid="uid://yu00tegvmx2i" path="res://assets/RoomTileset.res" id="1_ahstk"]
+
+[node name="DoorUpTexture" type="Node2D" unique_id=752599772]
+
+[node name="Floor" type="TileMapLayer" parent="." unique_id=649334946]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 2, 0, 0, 0)
+tile_set = ExtResource("1_ahstk")
+
+[node name="Door" type="TileMapLayer" parent="." unique_id=1752886027]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_ahstk")
