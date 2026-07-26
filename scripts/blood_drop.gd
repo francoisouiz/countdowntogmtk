@@ -1,7 +1,7 @@
 extends Node2D
 
 
-@export var heal_value: int = 20
+@export var heal_value: int = 5
 
 func pickup(player: Node2D) -> void:
 	player.add_time(heal_value)

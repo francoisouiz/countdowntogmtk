@@ -11,7 +11,7 @@ var inven = []
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var health_timer: Timer = $Timer
 @onready var i_frame_cooldown: Timer = $IFrameCooldown
-@export var max_health_time: float = 50.0
+@export var max_health_time: float = 20.0
 @export var current_form: Vampire_Forms = Vampire_Forms.HUMAN
 @export var speed = 1500
 
@@ -56,7 +56,6 @@ func _physics_process(delta):
 			curr_vel = curr_vel.bounce(collision_info.get_normal())
 		else:
 			move_and_slide()
-			diff_sec = move_toward(diff_sec, 0.0, 3 * delta)
 	
 func take_damage(hp):
 	if can_take_damage:
