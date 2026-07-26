@@ -1,7 +1,6 @@
 extends CharacterBody2D
 class_name Player
 
-signal player_died
 signal human
 
 enum Vampire_Forms {HUMAN, BAT}
@@ -41,6 +40,10 @@ func _ready() -> void:
 	
 	Events.room_entered.connect(func(room):
 		curr_vel = Vector2()
+	)
+	Events.room_entered.connect(func(level):
+		can_take_damage = false
+		i_frame_cooldown.start()
 	)
 
 
@@ -94,7 +97,7 @@ func _on_enter_timeout():
 		
 		
 func ded():
-	player_died.emit()
+	Events.player_died.emit(self)
 	queue_free()
 		
 func add_time(hp):

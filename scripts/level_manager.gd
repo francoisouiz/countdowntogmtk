@@ -1,4 +1,5 @@
 extends Node
+class_name LevelManager
 
 @onready var level = preload("res://scenes/level.tscn")
 @onready var player = preload("res://scenes/player.tscn")
@@ -7,6 +8,7 @@ extends Node
 @onready var UI = root.get_node("UI")
 @onready var level_number: int = 1
 
+var level_instance: Level
 var enemy_count = 0
 
 func _ready() -> void:
@@ -24,7 +26,7 @@ func get_enemy_count() -> int:
 	return get_tree().get_node_count_in_group("enemy")
 
 func create_level() -> void:
-	var level_instance = level.instantiate()
+	level_instance = level.instantiate()
 	level_instance.level_number = level_number
 	root.call_deferred("add_child", level_instance)
 
