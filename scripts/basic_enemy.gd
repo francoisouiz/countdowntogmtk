@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Enemy
+class_name BasicEnemy
 
 signal enemy_died
 
@@ -10,6 +10,9 @@ var _touching_player = false
 
 @export var damage = 10.0
 var SPEED = 30.0
+
+func _ready() -> void:
+	add_to_group("enemy")
 
 func move(delta) -> void:
 	if player:

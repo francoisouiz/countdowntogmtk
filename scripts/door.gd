@@ -5,6 +5,12 @@ class_name Door
 
 var disabled: bool = false
 var locked: bool = false
+var door_texture = null
+
+func _ready() -> void:
+	var door_texture_bundle = get_node("DoorTexture")
+	if door_texture_bundle:
+		door_texture = door_texture_bundle.get_node("Door")
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and !locked and !disabled:
@@ -13,3 +19,11 @@ func _on_body_entered(body: Node2D) -> void:
 func disable() -> void:
 	disabled = true
 	visible = false
+
+func unlock() -> void:
+	door_texture.visible = false
+	locked = false
+	
+func lock() -> void:
+	door_texture.visible = true
+	locked = true
