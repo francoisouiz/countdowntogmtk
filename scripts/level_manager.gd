@@ -15,7 +15,7 @@ func _ready() -> void:
 	Events.level_cleared.connect(func(level):
 		level_number += 1
 		level.queue_free()
-		if level_number == 4:
+		if level_number == 2:
 			PlayerStats.health_time = 40
 			load_end_scene()
 		else:
