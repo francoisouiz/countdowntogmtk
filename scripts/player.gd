@@ -28,12 +28,18 @@ var projectile_scene = preload("res://scenes/projectile.tscn")
 
 func _ready() -> void:
 	add_to_group("player")
-
+	
+	inven = PlayerStats.inventory
 	health_timer.wait_time = PlayerStats.health_time
 	health_timer.start()
 	
 	Events.level_cleared.connect(func(level):
 		PlayerStats.health_time = health_timer.time_left
+		PlayerStats.inventory = inven
+	)
+	
+	Events.room_entered.connect(func(room):
+		curr_vel = Vector2()
 	)
 
 
@@ -80,6 +86,9 @@ func take_damage(hp):
 		
 		can_take_damage = false
 		i_frame_cooldown.start()
+		
+func _on_enter_timeout():
+	curr_vel = Vector2()
 		
 		
 		
