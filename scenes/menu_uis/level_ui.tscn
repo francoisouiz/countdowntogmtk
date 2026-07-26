@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://1n7pjxuyy721"]
+
+[ext_resource type="Script" uid="uid://dosscbr7rx48h" path="res://scripts/level_ui.gd" id="1_b5lqf"]
+[ext_resource type="PackedScene" uid="uid://bgt7phb7ag8of" path="res://scenes/menu_uis/timer_ui.tscn" id="1_ht8af"]
+[ext_resource type="PackedScene" uid="uid://dy1ma683e3w7q" path="res://scenes/menu_uis/counts_down_ui.tscn" id="2_fqvjf"]
+
+[node name="Level_UI" type="Control" unique_id=1304710605]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b5lqf")
+
+[node name="Timer_UI" parent="." unique_id=1952476844 instance=ExtResource("1_ht8af")]
+layout_mode = 1
+offset_left = 3.0
+offset_top = -3.0
+offset_right = 43.0
+offset_bottom = 37.0
+
+[node name="Counts_Down_UI" parent="." unique_id=509996215 instance=ExtResource("2_fqvjf")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 994.0
+offset_top = 262.0
+offset_right = -5.936035
+offset_bottom = -299.16797

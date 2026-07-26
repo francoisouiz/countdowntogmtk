@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Enemy
 
+signal enemy_died
+
 var player: Player
 var found_player = false
 var blood_drop_scene = preload("res://scenes/blood_drop.tscn")
@@ -21,7 +23,12 @@ func die() -> void:
 	drop.position = position
 	get_node("../../BloodDrops").call_deferred("add_child", drop)
 	
+	enemy_died.emit()
+	
 	queue_free()
+
+func _ready() -> void:
+	add_to_group("enemies")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

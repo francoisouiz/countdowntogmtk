@@ -140,3 +140,7 @@ func _instantiate_rooms() -> void:
 				enemy_instance.position = (Vector2(11 * i, 11 * j) + Vector2(Room.DIMENSIONS) / 2) * 16
 				enemy_instance.z_index = 10
 				get_node("Enemies").add_child(enemy_instance)
+
+
+func _on_enemies_child_entered_tree(node: Node) -> void:
+	pass # Replace with function body.

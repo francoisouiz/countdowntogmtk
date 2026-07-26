@@ -1,12 +1,14 @@
 extends CharacterBody2D
 class_name Player
 
+signal player_died
+
 enum Vampire_Forms {HUMAN, BAT}
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_timer: Timer = $Timer
 @onready var i_frame_cooldown: Timer = $IFrameCooldown
-@export var max_health_time: float = 150
+@export var max_health_time: float = 50.0
 @export var current_form: Vampire_Forms = Vampire_Forms.HUMAN
 @export var speed = 3000
 
@@ -57,6 +59,7 @@ func take_damage(hp):
 		
 		
 func ded():
+	player_died.emit()
 	queue_free()
 		
 func add_time(hp):

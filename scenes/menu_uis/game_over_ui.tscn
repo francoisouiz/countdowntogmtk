@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dqup257fvhobn"]
+
+[ext_resource type="FontFile" uid="uid://c0t24puksbmdn" path="res://assets/Dracula.ttf" id="1_c3fev"]
+[ext_resource type="Script" uid="uid://dinb0fqg4vqqx" path="res://scripts/game_over_ui.gd" id="1_l87lx"]
+
+[node name="Game_Over_UI" type="Control" unique_id=2088372633]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = -115.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l87lx")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1547348001]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 381.0
+offset_bottom = 234.0
+color = Color(0.10822455, 0.10822464, 0.10822461, 0.6)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1429681617]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 16.0
+offset_right = 374.0
+offset_bottom = 183.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=213427097]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=676907494]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_c3fev")
+theme_override_font_sizes/font_size = 80
+text = "You Bled Out..."
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=444694334]
+layout_mode = 2
+
+[node name="ReturnButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=983576961]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 25
+text = "Return To
+Menu"
+
+[node name="ReplayButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=523070658]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 25
+text = "Restart
+"
+
+[connection signal="button_down" from="MarginContainer/VBoxContainer/HBoxContainer/ReturnButton" to="." method="_on_return_button_click"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/HBoxContainer/ReplayButton" to="." method="_on_replay_button_click"]

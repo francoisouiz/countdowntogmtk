@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://2yvq6yiiep7y"]
+
+[ext_resource type="Script" uid="uid://diogpnw6nc1vc" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[sub_resource type="GDScript" id="GDScript_ekxnf"]
+
+[node name="Main_Menu_UI" type="Control" unique_id=1384245569]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="Background" type="ColorRect" parent="." unique_id=755632484]
+layout_mode = 0
+offset_left = -11.0
+offset_top = -8.0
+offset_right = 1161.0
+offset_bottom = 657.0
+
+[node name="PlayButton" type="Button" parent="." unique_id=1471701799]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 320.0
+offset_right = 666.0
+offset_bottom = 388.0
+text = "PLAY"
+script = SubResource("GDScript_ekxnf")
+
+[connection signal="button_down" from="PlayButton" to="." method="_on_play_button_click"]
