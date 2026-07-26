@@ -46,8 +46,9 @@ func _physics_process(delta):
 	if diff_sec == 0:
 		current_form = Vampire_Forms.HUMAN
 	if velocity != Vector2():
-		animation_player.play("transform_to_human")
-		human.emit()
+		if velocity.length() < 100:
+			animation_player.play("transform_to_human")
+			human.emit()
 	if health_timer.time_left <= 0:
 		ded()
 	velocity = curr_vel.normalized() * diff_sec * speed
@@ -154,5 +155,5 @@ func _on_animation_finished(anim_name: StringName) -> void:
 	#implies one of the transforms ended
 	if anim_name == "transform_to_bat":
 		animation_player.play("fly")
-	elif  anim_name == "transform_to_human":
+	elif anim_name == "transform_to_human":
 		animation_player.play("idle")

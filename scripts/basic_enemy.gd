@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name BasicEnemy
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 var player: Player
 var found_player = false
 var blood_drop_scene = preload("res://scenes/blood_drop.tscn")
@@ -26,6 +28,7 @@ func move(delta) -> void:
 		move_and_slide()
 
 func die() -> void:
+	animation_player.play("die")
 	var random_dice = randi_range(1, 30)
 	var drop = blood_drop_scene.instantiate()
 	match random_dice:
@@ -41,8 +44,6 @@ func die() -> void:
 	
 	Events.enemy_died.emit(self)
 	print("dead")
-	
-	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
