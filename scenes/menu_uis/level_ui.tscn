@@ -29,13 +29,16 @@ offset_bottom = 20.152
 
 [node name="Counts_Down_UI" parent="." unique_id=509996215 instance=ExtResource("2_fqvjf")]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 994.0
-offset_top = 262.0
-offset_right = -5.936035
-offset_bottom = -299.16797
+anchor_bottom = 0.0
+offset_left = -136.0
+offset_top = 24.0
+offset_right = -136.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 1
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=202716023]
 stream = ExtResource("4_b5lqf")
@@ -50,6 +53,23 @@ offset_top = 113.0
 offset_right = 71.0
 offset_bottom = 153.0
 script = ExtResource("5_i4epf")
+
+[node name="Label3" type="Label" parent="Control" unique_id=2102399470]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.75600004
+anchor_top = -2.811
+anchor_right = -0.75600004
+anchor_bottom = -2.811
+offset_left = 209.24
+offset_top = 245.44
+offset_right = 944.24
+offset_bottom = 366.44
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "You're Crippled and constantly bleeding out.
+To survive, you must take the blood from your fellow counts"
+horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="Control" unique_id=1316083911]
 layout_mode = 1

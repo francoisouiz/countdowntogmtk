@@ -368,4 +368,7 @@ stream = ExtResource("6_fjrip")
 stream = ExtResource("8_smehm")
 volume_db = -10.0
 
+[node name="Flying" type="AudioStreamPlayer2D" parent="." unique_id=1803113068]
+volume_db = 14.625
+
 [connection signal="timeout" from="IFrameCooldown" to="." method="_on_i_frame_cooldown_timeout"]

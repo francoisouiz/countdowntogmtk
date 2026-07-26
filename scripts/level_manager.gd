@@ -16,6 +16,7 @@ func _ready() -> void:
 		level_number += 1
 		level.queue_free()
 		if level_number == 4:
+			PlayerStats.health_time = 40
 			load_end_scene()
 		else:
 			create_level()
