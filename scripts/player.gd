@@ -4,6 +4,7 @@ class_name Player
 signal player_died
 
 enum Vampire_Forms {HUMAN, BAT}
+var inven = ["bounce"]
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -15,6 +16,7 @@ enum Vampire_Forms {HUMAN, BAT}
 
 var can_take_damage = true
 var diff_sec = 0
+var curr_vel = Vector2()
 var press_time = 0
 var final_mouse = Vector2()
 var final_pos = Vector2()
@@ -30,7 +32,8 @@ func _ready() -> void:
 	health_timer.wait_time = max_health_time
 	health_timer.start()
 
-func _physics_process(delta):
+
+func _physics_process(delta):	
 	if current_form == Vampire_Forms.HUMAN:
 		shoot()
 	if diff_sec == 0:
@@ -38,10 +41,15 @@ func _physics_process(delta):
 		current_form = Vampire_Forms.HUMAN
 	if health_timer.time_left <= 0:
 		ded()
-		
-	velocity = (final_mouse - final_pos).normalized() * diff_sec * speed
+	velocity = curr_vel.normalized() * diff_sec * speed
 	diff_sec = move_toward(diff_sec, 0.0, 0.8 * delta)
-	move_and_slide()
+	
+	var collision_info = move_and_collide(velocity * delta)
+	if collision_info:
+		if "bounce" in inven:
+			curr_vel = curr_vel.bounce(collision_info.get_normal())
+		else:
+			diff_sec = 0
 	
 func take_damage(hp):
 	if can_take_damage:
@@ -75,9 +83,10 @@ func _input(event):
 		var release_time = Time.get_ticks_msec()
 		var diff_ms = release_time - press_time
 		current_form = Vampire_Forms.BAT
-		diff_sec = diff_ms / 1000.0
+		diff_sec = diff_ms / 1500.0
 		final_pos = global_position
 		final_mouse = get_global_mouse_position()
+		curr_vel = final_mouse - final_pos
 
 func get_relative_mouse_position() -> Vector2:
 	var mouse_coordinates: Vector2 = get_global_mouse_position()
