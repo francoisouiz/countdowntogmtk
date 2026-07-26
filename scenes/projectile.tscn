@@ -1,25 +1,25 @@
 [gd_scene format=3 uid="uid://c7tdsm07l0w3v"]
 
 [ext_resource type="Script" uid="uid://debyk2af2m03r" path="res://scripts/projectile.gd" id="1_c8fcr"]
+[ext_resource type="Texture2D" uid="uid://d2l464fo56a7a" path="res://assets/sprites/garlic_sprite.png" id="2_q3m7n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_72ghi"]
-radius = 1.0
+radius = 2.0
 
 [node name="Projectile" type="Node2D" unique_id=1717508004]
 script = ExtResource("1_c8fcr")
 
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1937998134]
-position = Vector2(4.4703484e-08, -1.4901161e-08)
-scale = Vector2(1.25, 1.25)
-color = Color(0.64998555, 0.25450507, 0.24433875, 1)
-polygon = PackedVector2Array(0, -1, 0.6666667, -0.6666667, 1, 0, 0.6666667, 0.6666667, 0, 1, -0.6666667, 0.6666667, -1, 0, -0.6666667, -0.6666667)
-
 [node name="DespawnTimer" type="Timer" parent="." unique_id=279518726]
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=325591281]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_q3m7n")
+
 [node name="Area2D" type="Area2D" parent="." unique_id=1992701468]
-collision_mask = 2
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=451220499]
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_72ghi")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

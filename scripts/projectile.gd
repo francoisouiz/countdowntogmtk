@@ -27,3 +27,5 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is BasicEnemy:
 		body.die()
 		queue_free()
+	elif body is not Player:
+		queue_free()
