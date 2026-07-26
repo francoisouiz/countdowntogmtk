@@ -5,6 +5,12 @@
 
 [node name="Root" type="Node2D" unique_id=1451838764]
 
+[node name="PlayerStats" type="Node" parent="." unique_id=2050119168]
+
+[node name="HealthTimer" type="Timer" parent="PlayerStats" unique_id=1806411943]
+one_shot = true
+autostart = true
+
 [node name="LevelManager" type="Node" parent="." unique_id=1066802529]
 script = ExtResource("1_twpsu")
 

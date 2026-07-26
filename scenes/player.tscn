@@ -310,13 +310,6 @@ animation = &"idle"
 [node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=1069524829]
 shape = SubResource("CapsuleShape2D_w7c3h")
 
-[node name="Timer" type="Timer" parent="." unique_id=367206767]
-one_shot = true
-autostart = true
-
-[node name="IFrameCooldown" type="Timer" parent="." unique_id=150136337]
-one_shot = true
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1274288248]
 amount = 4
 lifetime = 0.18000000000000002
@@ -328,4 +321,5 @@ color = Color(0.99999577, 0.22990721, 0.17073798, 1)
 hue_variation_min = -0.85
 hue_variation_max = 0.05
 
-[connection signal="timeout" from="IFrameCooldown" to="." method="_on_i_frame_cooldown_timeout"]
+[node name="IFrameCooldown" type="Timer" parent="." unique_id=361870830]
+one_shot = true

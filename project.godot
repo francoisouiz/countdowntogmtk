@@ -21,7 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-RoomChangeGlobal="*uid://qo7t24eimh7y"
+PlayerStats="*uid://qo7t24eimh7y"
 Events="*uid://dl7tvc2vnejni"
 
 [gui]
