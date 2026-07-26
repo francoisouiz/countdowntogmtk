@@ -15,9 +15,17 @@ var press_time = 0
 var final_mouse = Vector2()
 var final_pos = Vector2()
 
-func _ready():
+var projectile_scene = preload("res://scenes/projectile.tscn")
+
+func _ready() -> void:
+	add_to_group("player")
+	if RoomChangeGlobal.activate:
+		global_position = RoomChangeGlobal.player_pos
+		RoomChangeGlobal.activate = false
+
 	health_timer.wait_time = max_health_time
 	health_timer.start()
+
 
 func _physics_process(delta):
 	if current_form == Vampire_Forms.HUMAN:
@@ -58,8 +66,6 @@ func _input(event):
 		diff_sec = diff_ms / 1000.0
 		final_pos = global_position
 		final_mouse = get_global_mouse_position()
-
-var projectile_scene = preload("res://scenes/projectile.tscn")
 
 func get_relative_mouse_position() -> Vector2:
 	var mouse_coordinates: Vector2 = get_global_mouse_position()
