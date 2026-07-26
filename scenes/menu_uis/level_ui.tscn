@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dosscbr7rx48h" path="res://scripts/level_ui.gd" id="1_b5lqf"]
 [ext_resource type="PackedScene" uid="uid://bgt7phb7ag8of" path="res://scenes/menu_uis/timer_ui.tscn" id="1_ht8af"]
 [ext_resource type="PackedScene" uid="uid://dy1ma683e3w7q" path="res://scenes/menu_uis/counts_down_ui.tscn" id="2_fqvjf"]
+[ext_resource type="AudioStream" uid="uid://cyhibiyd1mnu7" path="res://assets/audio/in-game-bgm_final1.mp3" id="4_b5lqf"]
 
 [node name="Level_UI" type="Control" unique_id=1304710605]
 layout_mode = 3
@@ -29,3 +30,8 @@ offset_left = 994.0
 offset_top = 262.0
 offset_right = -5.936035
 offset_bottom = -299.16797
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=202716023]
+stream = ExtResource("4_b5lqf")
+volume_db = 7.373
+autoplay = true
