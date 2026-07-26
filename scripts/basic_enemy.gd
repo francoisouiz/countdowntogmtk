@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 
 var player: Player
+var found_player = false
 var blood_drop_scene = preload("res://scenes/blood_drop.tscn")
 var _can_damage = false
 
@@ -24,9 +25,10 @@ func die() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if not player:
-		# ensures a player is targetted before anything
+	if not found_player and not player:
+		# repeatedly tries to find the player. Once it finds it, it will stop looking
 		player = get_node("../../Player")
+		found_player = true
 		pass
 	move(delta)
 	damage_player()
