@@ -134,3 +134,9 @@ func _instantiate_rooms() -> void:
 			add_child(room_instance)
 			if rooms[i][j]["type"] == RoomType.START:
 				add_child(player_instance)
+			else:
+				var basic_enemy = preload("res://scenes/basic_enemy.tscn")
+				var enemy_instance = basic_enemy.instantiate()
+				enemy_instance.position = (Vector2(11 * i, 11 * j) + Vector2(Room.DIMENSIONS) / 2) * 16
+				enemy_instance.z_index = 10
+				add_child(enemy_instance)

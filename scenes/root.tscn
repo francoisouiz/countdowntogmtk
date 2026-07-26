@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dtjl3wyretbj8" path="res://scenes/level.tscn" id="1_lrqlo"]
 [ext_resource type="Texture2D" uid="uid://w6un1tp20y2e" path="res://assets/temp_icons/world_tileset.png" id="2_twpsu"]
-[ext_resource type="PackedScene" uid="uid://dtj2j7id5rrgf" path="res://scenes/basic_enemy.tscn" id="3_lrqlo"]
 [ext_resource type="PackedScene" uid="uid://b7qhgfs0xk5lk" path="res://scenes/blood_drop.tscn" id="4_sqa0i"]
 [ext_resource type="PackedScene" uid="uid://brl0lvtnuvu0u" path="res://scenes/canvas_layer.tscn" id="5_jh1ax"]
 
@@ -157,10 +156,4 @@ heal_value = null
 position = Vector2(8, 39)
 heal_value = null
 
-[node name="BasicEnemy" parent="." unique_id=574819004 instance=ExtResource("3_lrqlo")]
-position = Vector2(-55, -5)
-
 [node name="CanvasLayer" parent="." unique_id=543282367 instance=ExtResource("5_jh1ax")]
-
-[node name="BasicEnemy2" parent="." unique_id=1807508245 instance=ExtResource("3_lrqlo")]
-position = Vector2(139, -2)

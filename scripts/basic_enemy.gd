@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Enemy
 
-@onready var player: CharacterBody2D = get_node("%Player")
+var player: Player
 var blood_drop_scene = preload("res://scenes/blood_drop.tscn")
 var _can_damage = false
 
@@ -24,6 +24,9 @@ func die() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if not player:
+		player = get_node("../Player")
+		pass
 	move(delta)
 	damage_player()
 	pass
@@ -33,9 +36,9 @@ func damage_player() -> void:
 		player.take_damage(damage)
 
 func _on_body_entered(body: Node2D) -> void:
-	if body == player:
+	if body in get_tree().get_nodes_in_group("player"):
 		_can_damage = true
 
 func _on_body_exited(body: Node2D) -> void:
-	if body == player:
+	if body in get_tree().get_nodes_in_group("player"):
 		_can_damage = false
