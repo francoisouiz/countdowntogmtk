@@ -51,6 +51,23 @@ offset_right = 71.0
 offset_bottom = 153.0
 script = ExtResource("5_i4epf")
 
+[node name="Label3" type="Label" parent="Control" unique_id=2102399470]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.75600004
+anchor_top = -2.811
+anchor_right = -0.75600004
+anchor_bottom = -2.811
+offset_left = 209.24
+offset_top = 245.44
+offset_right = 944.24
+offset_bottom = 366.44
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "You're Crippled and constantly bleeding out.
+To survive, you must take the blood from your fellow counts"
+horizontal_alignment = 1
+
 [node name="Label" type="Label" parent="Control" unique_id=1316083911]
 layout_mode = 1
 anchors_preset = -1
