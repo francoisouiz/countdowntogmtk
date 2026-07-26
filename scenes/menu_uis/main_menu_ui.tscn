@@ -51,5 +51,6 @@ script = SubResource("GDScript_ekxnf")
 stream = ExtResource("2_ujg4x")
 volume_db = 7.373
 autoplay = true
+parameters/looping = true
 
 [connection signal="button_down" from="VBoxContainer/MarginContainer/PlayButton" to="." method="_on_play_button_click"]

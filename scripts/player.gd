@@ -15,6 +15,7 @@ var inven = []
 @export var current_form: Vampire_Forms = Vampire_Forms.HUMAN
 @export var speed = 1500
 @export var can_shoot = true
+@export var health_time = PlayerStats.health_time
 
 var can_take_damage = true
 var diff_sec = 0
@@ -30,7 +31,7 @@ func _ready() -> void:
 	add_to_group("player")
 	
 	inven = PlayerStats.inventory
-	health_timer.wait_time = PlayerStats.health_time
+	health_timer.wait_time = health_time
 	health_timer.start()
 	
 	Events.level_cleared.connect(func(level):
