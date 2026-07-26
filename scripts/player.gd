@@ -36,7 +36,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta):	
-	print(inven)
 	if current_form == Vampire_Forms.HUMAN:
 		shoot()
 		set_collision_mask_value(2, true)
@@ -66,6 +65,7 @@ func _physics_process(delta):
 	
 func take_damage(hp):
 	if can_take_damage:
+		
 		var current_left = health_timer.time_left
 		var new_time = max(0.0, current_left - hp)
 		
@@ -77,6 +77,7 @@ func take_damage(hp):
 		
 		can_take_damage = false
 		i_frame_cooldown.start()
+		
 		
 		
 func ded():
