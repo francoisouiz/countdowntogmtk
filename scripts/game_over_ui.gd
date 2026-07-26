@@ -7,6 +7,6 @@ func _on_return_button_click() -> void:
 	var canvas_layer = get_node("/root/Root/UI")
 	canvas_layer.add_child(main_menu)
 
-	level_manager.level_instance.queue_free()
+	get_node("/root/Root/Level").queue_free()
 	PlayerStats.health_time = 20.0
 	canvas_layer.get_node("Level_UI").queue_free()

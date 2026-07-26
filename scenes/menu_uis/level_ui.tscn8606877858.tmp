@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://1n7pjxuyy721"]
+
+[ext_resource type="Script" uid="uid://dosscbr7rx48h" path="res://scripts/level_ui.gd" id="1_b5lqf"]
+[ext_resource type="PackedScene" uid="uid://bgt7phb7ag8of" path="res://scenes/menu_uis/timer_ui.tscn" id="1_ht8af"]
+[ext_resource type="PackedScene" uid="uid://dy1ma683e3w7q" path="res://scenes/menu_uis/counts_down_ui.tscn" id="2_fqvjf"]
+[ext_resource type="AudioStream" uid="uid://cyhibiyd1mnu7" path="res://assets/audio/in-game-bgm_final1.mp3" id="4_b5lqf"]
+[ext_resource type="Script" uid="uid://l4dr3ubtjhry" path="res://scripts/tutorial.gd" id="5_i4epf"]
+
+[node name="Level_UI" type="Control" unique_id=1304710605]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b5lqf")
+
+[node name="Timer_UI" parent="." unique_id=1952476844 instance=ExtResource("1_ht8af")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.020000001
+anchor_top = 0.026
+anchor_right = 0.020000001
+anchor_bottom = 0.026
+offset_left = 555.96
+offset_top = -19.848
+offset_right = 595.96
+offset_bottom = 20.152
+
+[node name="Counts_Down_UI" parent="." unique_id=509996215 instance=ExtResource("2_fqvjf")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -136.0
+offset_top = 24.0
+offset_right = -136.0
+offset_bottom = 24.0
+grow_horizontal = 0
+grow_vertical = 1
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=202716023]
+stream = ExtResource("4_b5lqf")
+volume_db = -0.981
+autoplay = true
+parameters/looping = true
+
+[node name="Control" type="Control" parent="." unique_id=1456657398]
+anchors_preset = 0
+offset_left = 31.0
+offset_top = 113.0
+offset_right = 71.0
+offset_bottom = 153.0
+script = ExtResource("5_i4epf")
+
+[node name="Label3" type="Label" parent="Control" unique_id=2102399470]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.75600004
+anchor_top = -2.811
+anchor_right = -0.75600004
+anchor_bottom = -2.811
+offset_left = 209.24
+offset_top = 245.44
+offset_right = 944.24
+offset_bottom = 366.44
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "You're Crippled and constantly bleeding out.
+To survive, you must take the blood from your fellow counts"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Control" unique_id=1316083911]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.75600004
+anchor_top = -2.811
+anchor_right = -0.75600004
+anchor_bottom = -2.811
+offset_left = 814.24
+offset_top = 515.44
+offset_right = 1101.24
+offset_bottom = 620.44
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "Hold Q to turn into a bat
+Release to Fly"
+
+[node name="Label2" type="Label" parent="Control" unique_id=1712059166]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.74500006
+anchor_top = -2.834
+anchor_right = -0.74500006
+anchor_bottom = -2.834
+offset_left = 39.800003
+offset_top = 548.36
+offset_right = 268.8
+offset_bottom = 599.36
+theme_override_font_sizes/font_size = 50
+text = "Left Click to shoot"
+
+[node name="Timer" type="Timer" parent="Control" unique_id=256597760]
+wait_time = 6.0
+autostart = true
+
+[connection signal="timeout" from="Control/Timer" to="Control" method="_on_timer_timeout"]
