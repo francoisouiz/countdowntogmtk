@@ -65,6 +65,7 @@ func _physics_process(delta):
 	
 func take_damage(hp):
 	if can_take_damage:
+		
 		var current_left = health_timer.time_left
 		var new_time = max(0.0, current_left - hp)
 		
@@ -76,6 +77,7 @@ func take_damage(hp):
 		
 		can_take_damage = false
 		i_frame_cooldown.start()
+		
 		
 		
 func ded():
