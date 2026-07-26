@@ -83,4 +83,4 @@ func shoot() -> void:
 		proj.set_velocity_components(mouse_coordinates)
 		proj.position = position
 		
-		get_node("/root/Root/PlayerProjectiles").add_child(proj)
+		get_node("../PlayerProjectiles").add_child(proj)

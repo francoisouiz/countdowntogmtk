@@ -139,4 +139,4 @@ func _instantiate_rooms() -> void:
 				var enemy_instance = basic_enemy.instantiate()
 				enemy_instance.position = (Vector2(11 * i, 11 * j) + Vector2(Room.DIMENSIONS) / 2) * 16
 				enemy_instance.z_index = 10
-				add_child(enemy_instance)
+				get_node("Enemies").add_child(enemy_instance)

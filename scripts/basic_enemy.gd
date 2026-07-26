@@ -18,14 +18,15 @@ func move(delta) -> void:
 func die() -> void:
 	var drop = blood_drop_scene.instantiate()
 	drop.position = position
-	get_node("/root/Root/BloodDrops").call_deferred("add_child", drop)
+	get_node("../../BloodDrops").call_deferred("add_child", drop)
 	
 	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not player:
-		player = get_node("../Player")
+		# ensures a player is targetted before anything
+		player = get_node("../../Player")
 		pass
 	move(delta)
 	damage_player()
