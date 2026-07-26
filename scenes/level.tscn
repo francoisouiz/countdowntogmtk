@@ -16,3 +16,5 @@ script = ExtResource("2_w7c3h")
 [node name="BloodDrops" type="Node" parent="." unique_id=1550726003]
 
 [node name="PlayerProjectiles" type="Node" parent="." unique_id=2098990834]
+
+[node name="Bounce" type="Node" parent="." unique_id=678130208]
