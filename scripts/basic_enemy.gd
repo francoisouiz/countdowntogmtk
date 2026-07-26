@@ -1,8 +1,6 @@
 extends CharacterBody2D
 class_name BasicEnemy
 
-signal enemy_died
-
 var player: Player
 var found_player = false
 var blood_drop_scene = preload("res://scenes/blood_drop.tscn")
@@ -11,8 +9,12 @@ var _touching_player = false
 @export var damage = 10.0
 var SPEED = 30.0
 
+func _on_human():
+	set_collision_mask_value(3, true)
+
 func _ready() -> void:
 	add_to_group("enemy")
+	
 
 func move(delta) -> void:
 	if player:
@@ -26,7 +28,8 @@ func die() -> void:
 	drop.position = global_position
 	get_node("../../BloodDrops").call_deferred("add_child", drop)
 	
-	enemy_died.emit()
+	Events.enemy_died.emit(self)
+	print("dead")
 	
 	queue_free()
 
@@ -35,6 +38,7 @@ func _process(delta: float) -> void:
 	if not found_player and not player:
 		# repeatedly tries to find the player. Once it finds it, it will stop looking
 		player = get_node("../../Player")
+		player.human.connect(_on_human)
 		found_player = true
 		pass
 	move(delta)

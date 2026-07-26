@@ -2,9 +2,10 @@ extends CharacterBody2D
 class_name Player
 
 signal player_died
+signal human
 
 enum Vampire_Forms {HUMAN, BAT}
-var inven = ["bounce"]
+var inven = []
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -12,7 +13,7 @@ var inven = ["bounce"]
 @onready var i_frame_cooldown: Timer = $IFrameCooldown
 @export var max_health_time: float = 50.0
 @export var current_form: Vampire_Forms = Vampire_Forms.HUMAN
-@export var speed = 2000
+@export var speed = 1500
 
 var can_take_damage = true
 var diff_sec = 0
@@ -36,9 +37,14 @@ func _ready() -> void:
 func _physics_process(delta):	
 	if current_form == Vampire_Forms.HUMAN:
 		shoot()
+		set_collision_mask_value(2, true)
+	else:
+		set_collision_mask_value(2, false)
 	if diff_sec == 0:
-		animation_player.play("transform_to_human")
 		current_form = Vampire_Forms.HUMAN
+	if velocity != Vector2():
+		animation_player.play("transform_to_human")
+		human.emit()
 	if health_timer.time_left <= 0:
 		ded()
 	velocity = curr_vel.normalized() * diff_sec * speed
@@ -49,7 +55,8 @@ func _physics_process(delta):
 		if "bounce" in inven:
 			curr_vel = curr_vel.bounce(collision_info.get_normal())
 		else:
-			diff_sec = 0
+			move_and_slide()
+			diff_sec = move_toward(diff_sec, 0.0, 3 * delta)
 	
 func take_damage(hp):
 	if can_take_damage:

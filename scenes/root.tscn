@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://dpb31xovj2vum"]
 
+[ext_resource type="Script" uid="uid://dcc0ppbl7got4" path="res://scripts/level_manager.gd" id="1_twpsu"]
 [ext_resource type="PackedScene" uid="uid://2yvq6yiiep7y" path="res://scenes/menu_uis/main_menu_ui.tscn" id="3_lrqlo"]
 
 [node name="Root" type="Node2D" unique_id=1451838764]
+
+[node name="LevelManager" type="Node" parent="." unique_id=1066802529]
+script = ExtResource("1_twpsu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1221277800]
 
