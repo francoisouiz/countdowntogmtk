@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://38c5t1kf85m8" path="res://assets/sprites/bat_anim.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://ccjy8rktoa6f4" path="res://assets/sprites/mc_sprite.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://defu1oiosome4" path="res://assets/sprites/charge_anim.png" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://1sp601duwp1s" path="res://assets/audio/shootfinal.mp3" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://drn2xp4v4upbt" path="res://assets/audio/shoot2.mp3" id="6_fjrip"]
+[ext_resource type="AudioStream" uid="uid://bipa8gjkb4jyl" path="res://assets/audio/shoot1.mp3" id="6_smehm"]
 
 [sub_resource type="Animation" id="Animation_qhqgy"]
 length = 0.001
@@ -324,4 +327,15 @@ hue_variation_max = 0.05
 [node name="IFrameCooldown" type="Timer" parent="." unique_id=361870830]
 one_shot = true
 
+[node name="Shoot" type="AudioStreamPlayer2D" parent="." unique_id=173452265]
+unique_name_in_owner = true
+stream = ExtResource("5_qlg0r")
+
+[node name="Shoot2" type="AudioStreamPlayer2D" parent="." unique_id=903753936]
+unique_name_in_owner = true
+stream = ExtResource("6_smehm")
+
+[node name="Shoot3" type="AudioStreamPlayer2D" parent="." unique_id=957258423]
+unique_name_in_owner = true
+stream = ExtResource("6_fjrip")
 [connection signal="timeout" from="IFrameCooldown" to="." method="_on_i_frame_cooldown_timeout"]

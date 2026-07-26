@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://busfa8fni0gb8" path="res://scripts/bounce.gd" id="1_24g6y"]
 [ext_resource type="Texture2D" uid="uid://caikdh3y5k78j" path="res://assets/new_arrow.png" id="2_24g6y"]
+[ext_resource type="AudioStream" uid="uid://beb46isrl3kka" path="res://assets/audio/item.mp3" id="3_sgfuw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3x7s"]
 size = Vector2(15.5, 9)
@@ -22,4 +23,26 @@ collision_mask = 5
 position = Vector2(-0.75, -0.5)
 shape = SubResource("RectangleShape2D_s3x7s")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1527112901]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=341222643]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -16.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 96
+text = "The walls feel bouncy"
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="." unique_id=989700005]
+stream = ExtResource("3_sgfuw")
+
+[node name="Timer" type="Timer" parent="." unique_id=377953114]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

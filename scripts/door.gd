@@ -21,9 +21,11 @@ func disable() -> void:
 	visible = false
 
 func unlock() -> void:
+	$Unlock.play()
 	door_texture.visible = false
 	locked = false
 	
 func lock() -> void:
+	$Lock.play()
 	door_texture.visible = true
 	locked = true
