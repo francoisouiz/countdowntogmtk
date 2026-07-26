@@ -114,6 +114,14 @@ func shoot() -> void:
 	if !can_shoot or !get_node("../PlayerProjectiles"):
 		return
 	if Input.is_action_just_pressed("shoot"):
+		var rand = randi_range(1, 3)
+		match rand:
+			1:
+				%Shoot.play()
+			2:
+				%Shoot2.play()
+			3:
+				%Shoot3.play()
 		var mouse_coordinates: Vector2 = get_relative_mouse_position().normalized()
 		
 		if "trip" not in inven:

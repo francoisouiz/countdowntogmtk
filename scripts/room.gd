@@ -26,7 +26,9 @@ func _ready() -> void:
 	if !door_directions[Vector2i.LEFT]: door_left.disable()
 	if !door_directions[Vector2i.RIGHT]: door_right.disable()
 	
-	unlock()
+	for door in doors:
+		door.locked = false
+		door.door_texture.visible = false
 	visible = false
 
 func lock() -> void:
