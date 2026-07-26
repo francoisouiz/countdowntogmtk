@@ -40,6 +40,10 @@ func _ready() -> void:
 	Events.room_entered.connect(func(room):
 		curr_vel = Vector2()
 	)
+	Events.room_entered.connect(func(level):
+		can_take_damage = false
+		i_frame_cooldown.start()
+	)
 
 
 func _physics_process(delta):	
