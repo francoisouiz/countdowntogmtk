@@ -24,6 +24,10 @@ config/icon="res://icon.svg"
 RoomChangeGlobal="*uid://qo7t24eimh7y"
 Events="*uid://dl7tvc2vnejni"
 
+[gui]
+
+theme/custom_font="uid://c0t24puksbmdn"
+
 [input]
 
 move_up_key={

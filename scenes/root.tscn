@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://dpb31xovj2vum"]
 
-[ext_resource type="PackedScene" uid="uid://dtjl3wyretbj8" path="res://scenes/level.tscn" id="1_lrqlo"]
-[ext_resource type="PackedScene" uid="uid://brl0lvtnuvu0u" path="res://scenes/canvas_layer.tscn" id="5_jh1ax"]
+[ext_resource type="PackedScene" uid="uid://2yvq6yiiep7y" path="res://scenes/menu_uis/main_menu_ui.tscn" id="3_lrqlo"]
 
 [node name="Root" type="Node2D" unique_id=1451838764]
 
-[node name="Level" parent="." unique_id=1772488304 instance=ExtResource("1_lrqlo")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1221277800]
 
-[node name="CanvasLayer" parent="." unique_id=543282367 instance=ExtResource("5_jh1ax")]
+[node name="MainMenu" parent="CanvasLayer" unique_id=1384245569 instance=ExtResource("3_lrqlo")]

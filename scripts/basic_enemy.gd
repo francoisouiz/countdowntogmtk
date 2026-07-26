@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name BasicEnemy
 
+signal enemy_died
+
 var player: Player
 var found_player = false
 var blood_drop_scene = preload("res://scenes/blood_drop.tscn")
@@ -23,6 +25,8 @@ func die() -> void:
 	var drop = blood_drop_scene.instantiate()
 	drop.position = global_position
 	get_node("../../BloodDrops").call_deferred("add_child", drop)
+	
+	enemy_died.emit()
 	
 	queue_free()
 
