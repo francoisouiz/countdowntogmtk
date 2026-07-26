@@ -67,6 +67,7 @@ func _physics_process(delta):
 	
 func take_damage(hp):
 	if can_take_damage:
+		
 		var current_left = health_timer.time_left
 		var new_time = max(0.0, current_left - hp)
 		
@@ -78,6 +79,7 @@ func take_damage(hp):
 		
 		can_take_damage = false
 		i_frame_cooldown.start()
+		
 		
 		
 func ded():
@@ -98,6 +100,8 @@ func _input(event):
 		var diff_ms = release_time - press_time
 		current_form = Vampire_Forms.BAT
 		diff_sec = diff_ms / 1500.0
+		if diff_sec > 0.3:
+			diff_sec = 0.3
 		final_pos = global_position
 		final_mouse = get_global_mouse_position()
 		curr_vel = final_mouse - final_pos
@@ -111,12 +115,29 @@ func shoot() -> void:
 		return
 	if Input.is_action_just_pressed("shoot"):
 		var mouse_coordinates: Vector2 = get_relative_mouse_position().normalized()
-		var proj = projectile_scene.instantiate()
 		
-		proj.set_velocity_components(mouse_coordinates)
-		proj.position = position
-		
-		get_node("../PlayerProjectiles").add_child(proj)
+		if "trip" not in inven:
+			var proj = projectile_scene.instantiate()
+			
+			proj.set_velocity_components(mouse_coordinates)
+			proj.position = position
+			
+			get_node("../PlayerProjectiles").add_child(proj)
+		else:
+			var proj1 = projectile_scene.instantiate()
+			var proj2 = projectile_scene.instantiate()
+			var proj3 = projectile_scene.instantiate()
+			
+			proj1.set_velocity_components(mouse_coordinates)
+			proj2.set_velocity_components(mouse_coordinates.rotated(PI/6))
+			proj3.set_velocity_components(mouse_coordinates.rotated(-PI/6))
+			proj1.position = position
+			proj2.position = position
+			proj3.position = position
+			
+			get_node("../PlayerProjectiles").add_child(proj1)
+			get_node("../PlayerProjectiles").add_child(proj2)
+			get_node("../PlayerProjectiles").add_child(proj3)
 
 func _on_i_frame_cooldown_timeout() -> void:
 	can_take_damage = true

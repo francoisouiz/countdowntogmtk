@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c2kmyh62pl8g6"]
+
+[ext_resource type="Script" uid="uid://busfa8fni0gb8" path="res://scripts/bounce.gd" id="1_24g6y"]
+[ext_resource type="Texture2D" uid="uid://caikdh3y5k78j" path="res://assets/new_arrow.png" id="2_24g6y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3x7s"]
+size = Vector2(15.5, 9)
+
+[node name="Bounce" type="Node2D" unique_id=1917848021]
+script = ExtResource("1_24g6y")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1364549958]
+position = Vector2(-1, 0)
+scale = Vector2(0.055214725, 0.056872036)
+texture = ExtResource("2_24g6y")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1009814381]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=380452086]
+position = Vector2(-0.75, -0.5)
+shape = SubResource("RectangleShape2D_s3x7s")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

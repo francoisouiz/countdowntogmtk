@@ -4,6 +4,8 @@ class_name BasicEnemy
 var player: Player
 var found_player = false
 var blood_drop_scene = preload("res://scenes/blood_drop.tscn")
+var triple_scene = preload("res://scenes/triple.tscn")
+var bounce_scene = preload("res://scenes/bounce.tscn")
 var _touching_player = false
 
 @export var damage = 10.0
@@ -24,9 +26,18 @@ func move(delta) -> void:
 		move_and_slide()
 
 func die() -> void:
+	var random_dice = randi_range(1, 30)
 	var drop = blood_drop_scene.instantiate()
+	match random_dice:
+		1:
+			if "bounce" not in player.inven:
+				drop = bounce_scene.instantiate()
+		2:
+			if "trip" not in player.inven:
+				drop = triple_scene.instantiate()
+				
 	drop.position = global_position
-	get_node("../../BloodDrops").call_deferred("add_child", drop)
+	get_node("../../Bounce").call_deferred("add_child", drop)
 	
 	Events.enemy_died.emit(self)
 	print("dead")
