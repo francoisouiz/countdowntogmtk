@@ -1,7 +1,11 @@
 extends Control
 
 @onready var countdown_label: Label = $HBoxContainer/MarginContainer/CountdownLabel
+var counter = 0
 
-func _process(delta):
-	var enemies = get_tree().get_node_count_in_group("enemy")
-	countdown_label.text = str(enemies)
+func _ready() -> void:
+	Events.enemy_died.connect(_incrament)
+
+func _incrament(enemy):
+	counter += 1
+	countdown_label.text = str(counter)

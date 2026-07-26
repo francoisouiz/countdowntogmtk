@@ -27,11 +27,11 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.6666667, 0.22745098, 0.18431373, 1)
 theme_override_fonts/font = ExtResource("1_75lcl")
 theme_override_font_sizes/font_size = 70
-text = "00"
+text = "0"
 
 [node name="Label" type="Label" parent="HBoxContainer" unique_id=784299671]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_75lcl")
 theme_override_font_sizes/font_size = 40
 text = "Counts
-Remaining"
+Downed"
