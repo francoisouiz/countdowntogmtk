@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://2yvq6yiiep7y"]
 
 [ext_resource type="Script" uid="uid://diogpnw6nc1vc" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="AudioStream" uid="uid://dt5wt5klh6ye4" path="res://assets/audio/maintheme_draft1.mp3" id="2_ujg4x"]
 
 [sub_resource type="GDScript" id="GDScript_ekxnf"]
 
@@ -45,5 +46,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 75
 text = "PLAY"
 script = SubResource("GDScript_ekxnf")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=894460160]
+stream = ExtResource("2_ujg4x")
+volume_db = 7.373
+autoplay = true
 
 [connection signal="button_down" from="VBoxContainer/MarginContainer/PlayButton" to="." method="_on_play_button_click"]
