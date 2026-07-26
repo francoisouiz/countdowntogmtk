@@ -7,6 +7,7 @@ enum Vampire_Forms {HUMAN, BAT}
 var inven = ["bounce"]
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var health_timer: Timer = $Timer
 @onready var i_frame_cooldown: Timer = $IFrameCooldown
 @export var max_health_time: float = 50.0
@@ -36,8 +37,8 @@ func _physics_process(delta):
 	if current_form == Vampire_Forms.HUMAN:
 		shoot()
 	if diff_sec == 0:
+		animation_player.play("transform_to_human")
 		current_form = Vampire_Forms.HUMAN
-		look_at(get_global_mouse_position())
 	if health_timer.time_left <= 0:
 		ded()
 	velocity = curr_vel.normalized() * diff_sec * speed
@@ -75,7 +76,9 @@ func add_time(hp):
 
 func _input(event):
 	if event.is_action_pressed("charge"):
+		animation_player.play("transform_to_bat")
 		press_time = Time.get_ticks_msec()
+	
 	elif event.is_action_released("charge"):
 		var release_time = Time.get_ticks_msec()
 		var diff_ms = release_time - press_time
@@ -101,3 +104,10 @@ func shoot() -> void:
 
 func _on_i_frame_cooldown_timeout() -> void:
 	can_take_damage = true
+
+func _on_animation_finished(anim_name: StringName) -> void:
+	#implies one of the transforms ended
+	if anim_name == "transform_to_bat":
+		animation_player.play("fly")
+	elif  anim_name == "transform_to_human":
+		animation_player.play("idle")
