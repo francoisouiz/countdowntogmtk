@@ -8,10 +8,9 @@ enum Vampire_Forms {HUMAN, BAT}
 @onready var i_frame_cooldown: Timer = $IFrameCooldown
 @export var max_health_time: float = 150
 @export var current_form: Vampire_Forms = Vampire_Forms.HUMAN
-@export var speed = 3000
+@export var speed = 2000
 
 var can_take_damage = true
-
 var diff_sec = 0
 var press_time = 0
 var final_mouse = Vector2()
