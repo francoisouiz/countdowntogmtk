@@ -35,6 +35,10 @@ func _ready() -> void:
 	Events.level_cleared.connect(func(level):
 		PlayerStats.health_time = health_timer.time_left
 	)
+	Events.room_entered.connect(func(level):
+		can_take_damage = false
+		i_frame_cooldown.start()
+	)
 
 
 func _physics_process(delta):	
