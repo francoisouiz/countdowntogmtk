@@ -33,5 +33,5 @@ offset_bottom = -299.16797
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=202716023]
 stream = ExtResource("4_b5lqf")
-volume_db = 7.373
+volume_db = -0.981
 autoplay = true
