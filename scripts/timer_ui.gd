@@ -1,7 +1,7 @@
 extends Control
 
 @onready var label = get_node("/root/Root/CanvasLayer/Timer_UI/MarginContainer/HBoxContainer/MarginContainer/Label")
-@onready var timer = get_node("/root/Root/Player/Timer")
+@onready var timer = get_node("/root/Root/Level/Player/Timer")
 
 func _process(delta):
 	if timer:

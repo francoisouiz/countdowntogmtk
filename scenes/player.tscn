@@ -63,6 +63,7 @@ radius = 5.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1239870288]
 script = ExtResource("1_g2els")
+max_health_time = 100.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=729284754]
 position = Vector2(0, -7)
