@@ -14,6 +14,7 @@ var inven = []
 #@export var max_health_time: float = 20.0
 @export var current_form: Vampire_Forms = Vampire_Forms.HUMAN
 @export var speed = 1500
+@export var can_shoot = true
 
 var can_take_damage = true
 var diff_sec = 0
@@ -21,6 +22,7 @@ var curr_vel = Vector2()
 var press_time = 0
 var final_mouse = Vector2()
 var final_pos = Vector2()
+
 
 var projectile_scene = preload("res://scenes/projectile.tscn")
 
@@ -50,8 +52,9 @@ func _physics_process(delta):
 	if diff_sec == 0:
 		current_form = Vampire_Forms.HUMAN
 	if velocity != Vector2():
-		animation_player.play("transform_to_human")
-		human.emit()
+		if velocity.length() < 100:
+			animation_player.play("transform_to_human")
+			human.emit()
 	if health_timer.time_left <= 0:
 		ded()
 	velocity = curr_vel.normalized() * diff_sec * speed
@@ -118,6 +121,8 @@ func get_relative_mouse_position() -> Vector2:
 	return Vector2(mouse_coordinates.x - position.x, mouse_coordinates.y - position.y)
 
 func shoot() -> void:
+	if !can_shoot or !get_node("../PlayerProjectiles"):
+		return
 	if Input.is_action_just_pressed("shoot"):
 		var rand = randi_range(1, 3)
 		match rand:
@@ -159,5 +164,5 @@ func _on_animation_finished(anim_name: StringName) -> void:
 	#implies one of the transforms ended
 	if anim_name == "transform_to_bat":
 		animation_player.play("fly")
-	elif  anim_name == "transform_to_human":
+	elif anim_name == "transform_to_human":
 		animation_player.play("idle")
