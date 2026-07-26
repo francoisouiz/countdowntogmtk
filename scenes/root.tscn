@@ -1,6 +1,6 @@
-[gd_scene format=4 uid="uid://cyrntky2g0wjs"]
+[gd_scene format=4 uid="uid://dpb31xovj2vum"]
 
-[ext_resource type="PackedScene" uid="uid://fyyoe5vf3xm1" path="res://scenes/player.tscn" id="1_j5px3"]
+[ext_resource type="PackedScene" uid="uid://dtjl3wyretbj8" path="res://scenes/level.tscn" id="1_lrqlo"]
 [ext_resource type="Texture2D" uid="uid://w6un1tp20y2e" path="res://assets/temp_icons/world_tileset.png" id="2_twpsu"]
 [ext_resource type="PackedScene" uid="uid://dtj2j7id5rrgf" path="res://scenes/basic_enemy.tscn" id="3_lrqlo"]
 [ext_resource type="PackedScene" uid="uid://b7qhgfs0xk5lk" path="res://scenes/blood_drop.tscn" id="4_sqa0i"]
@@ -134,18 +134,12 @@ sources/0 = SubResource("TileSetAtlasSource_lrqlo")
 
 [node name="Root" type="Node2D" unique_id=1451838764]
 
+[node name="Level" parent="." unique_id=1772488304 instance=ExtResource("1_lrqlo")]
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1937120604]
 position = Vector2(1, 0)
 tile_map_data = PackedByteArray("AAAAAP7/AAAAAAEAAAD///7/AAAAAAEAAAD/////AAAAAAEAAAAAAP//AAAAAAEAAAAAAAAAAAAAAAEAAAD//wAAAAAAAAEAAAD+/wAAAAAAAAEAAAD+////AAAAAAEAAAD+//7/AAAAAAEAAAD+//3/AAAAAAEAAAD///3/AAAAAAEAAAAAAP3/AAAAAAEAAAABAP3/AAAAAAEAAAABAP7/AAAAAAEAAAABAP//AAAAAAEAAAABAAAAAAAAAAEAAAD+/wEAAAAAAAEAAAD//wEAAAAAAAEAAAAAAAEAAAAAAAEAAAABAAEAAAAAAAEAAAACAAEAAAAAAAEAAAACAAAAAAAAAAEAAAACAP//AAAAAAEAAAACAP7/AAAAAAEAAAACAP3/AAAAAAEAAAACAPz/AAAAAAEAAAABAPz/AAAAAAEAAAAAAPz/AAAAAAEAAAD///z/AAAAAAEAAAD+//z/AAAAAAEAAAD9//z/AAAAAAEAAAD9//3/AAAAAAEAAAD8//3/AAAAAAEAAAD8//7/AAAAAAEAAAD9//7/AAAAAAEAAAD9////AAAAAAEAAAD9/wAAAAAAAAEAAAD9/wEAAAAAAAEAAAD8////AAAAAAEAAAD8/wAAAAAAAAEAAAD8/wEAAAAAAAEAAAD9/wIAAAAAAAEAAAD+/wIAAAAAAAEAAAD//wIAAAAAAAEAAAABAAIAAAAAAAEAAAAAAAIAAAAAAAEAAAACAAIAAAAAAAEAAAADAAEAAAAAAAEAAAADAAAAAAAAAAEAAAADAP//AAAAAAEAAAADAP7/AAAAAAEAAAADAP3/AAAAAAEAAAADAPz/AAAAAAEAAAD8//z/AAAAAAEAAAD8/wIAAAAAAAEAAAADAAIAAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_72ghi")
-
-[node name="Player" parent="." unique_id=1239870288 instance=ExtResource("1_j5px3")]
-unique_name_in_owner = true
-position = Vector2(1, 0)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=658414016]
-position = Vector2(0, -6)
-zoom = Vector2(4, 4)
 
 [node name="PlayerProjectiles" type="Node" parent="." unique_id=1716505557]
 

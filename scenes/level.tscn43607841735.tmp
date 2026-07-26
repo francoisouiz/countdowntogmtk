@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dtjl3wyretbj8"]
+
+[ext_resource type="Script" uid="uid://ddrvv3rfwotq6" path="res://scripts/level.gd" id="1_2q6dc"]
+
+[sub_resource type="GDScript" id="GDScript_2q6dc"]
+script/source = "extends Camera2D
+
+func _ready() -> void:
+	Events.room_entered.connect(func(room):
+		global_position = room.global_position + (Vector2(room.DIMENSIONS) + Vector2(1, 1)) * 8
+	)
+"
+
+[node name="Level" type="Node2D" unique_id=1236090623]
+script = ExtResource("1_2q6dc")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=213041455]
+script = SubResource("GDScript_2q6dc")

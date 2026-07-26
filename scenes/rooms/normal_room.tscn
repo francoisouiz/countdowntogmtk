@@ -1,0 +1,72 @@
+[gd_scene format=4 uid="uid://fxe6yqhxrrr2"]
+
+[ext_resource type="Script" uid="uid://lueu0lcodtf7" path="res://scripts/room.gd" id="1_wn154"]
+[ext_resource type="TileSet" uid="uid://cmq5wy5vmdsbi" path="res://assets/temp_icons/TempTileset.res" id="2_xiuev"]
+[ext_resource type="PackedScene" uid="uid://ctai6blx00v2j" path="res://scenes/door.tscn" id="3_q3p62"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2g58"]
+size = Vector2(18, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ykry"]
+size = Vector2(18, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sq8v1"]
+size = Vector2(48, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdrft"]
+size = Vector2(48, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kfp2"]
+size = Vector2(152, 152)
+
+[node name="NormalRoom" type="Node2D" unique_id=1831833429]
+script = ExtResource("1_wn154")
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=2090668736]
+tile_map_data = PackedByteArray("AAABAAEAAAAGAAAAAAABAAIAAAAGAAEAAAABAAMAAAAGAAIAAAACAAEAAAAHAAAAAAACAAIAAAAHAAEAAAACAAMAAAAHAAIAAAADAAEAAAAIAAAAAAADAAIAAAAIAAEAAAADAAMAAAAIAAIAAAAEAAEAAAAGAAAAAAAEAAIAAAAGAAEAAAAEAAMAAAAGAAIAAAAFAAEAAAAHAAAAAAAFAAIAAAAHAAEAAAAFAAMAAAAHAAIAAAAGAAEAAAAIAAAAAAAGAAIAAAAIAAEAAAAGAAMAAAAIAAIAAAABAAQAAAAGAAAAAAABAAUAAAAGAAEAAAABAAYAAAAGAAIAAAACAAQAAAAHAAAAAAACAAUAAAAHAAEAAAACAAYAAAAHAAIAAAADAAQAAAAIAAAAAAADAAUAAAAIAAEAAAADAAYAAAAIAAIAAAAEAAQAAAAGAAAAAAAEAAUAAAAGAAEAAAAEAAYAAAAGAAIAAAAFAAQAAAAHAAAAAAAFAAUAAAAHAAEAAAAFAAYAAAAHAAIAAAAGAAQAAAAIAAAAAAAGAAUAAAAIAAEAAAAGAAYAAAAIAAIAAAAHAAEAAAAGAAAAAAAHAAIAAAAGAAEAAAAHAAMAAAAGAAIAAAAIAAEAAAAHAAAAAAAIAAIAAAAHAAEAAAAIAAMAAAAHAAIAAAAJAAEAAAAIAAAAAAAJAAIAAAAIAAEAAAAJAAMAAAAIAAIAAAAHAAQAAAAGAAAAAAAHAAUAAAAGAAEAAAAHAAYAAAAGAAIAAAAIAAQAAAAHAAAAAAAIAAUAAAAHAAEAAAAIAAYAAAAHAAIAAAAJAAQAAAAIAAAAAAAJAAUAAAAIAAEAAAAJAAYAAAAIAAIAAAABAAcAAAAGAAAAAAABAAgAAAAGAAEAAAABAAkAAAAGAAIAAAACAAcAAAAHAAAAAAACAAgAAAAHAAEAAAACAAkAAAAHAAIAAAADAAcAAAAIAAAAAAADAAgAAAAIAAEAAAADAAkAAAAIAAIAAAAEAAcAAAAGAAAAAAAEAAgAAAAGAAEAAAAEAAkAAAAGAAIAAAAFAAcAAAAHAAAAAAAFAAgAAAAHAAEAAAAFAAkAAAAHAAIAAAAGAAcAAAAIAAAAAAAGAAgAAAAIAAEAAAAGAAkAAAAIAAIAAAAHAAcAAAAGAAAAAAAHAAgAAAAGAAEAAAAHAAkAAAAGAAIAAAAIAAcAAAAHAAAAAAAIAAgAAAAHAAEAAAAIAAkAAAAHAAIAAAAJAAcAAAAIAAAAAAAJAAgAAAAIAAEAAAAJAAkAAAAIAAIAAAA=")
+tile_set = ExtResource("2_xiuev")
+
+[node name="Walls" type="TileMapLayer" parent="." unique_id=1005089133]
+tile_map_data = PackedByteArray("AAABAAAAAAABAAAAAAACAAAAAAACAAAAAAADAAAAAAADAAAAAAAEAAAAAAAEAAAAAAAFAAAAAAACAAAAAAAGAAAAAAADAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAADAAAAAAAKAAEAAAAFAAEAAAAKAAIAAAAFAAIAAAAKAAMAAAAFAAMAAAAKAAcAAAAFAAEAAAAKAAgAAAAFAAIAAAAKAAkAAAAFAAMAAAAKAAYAAAAFAAIAAAAKAAUAAAAFAAMAAAAKAAQAAAAFAAMAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAMAAAAAAAQAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAYAAAAAAAEAAAAAAAcAAAAAAAEAAAAAAAgAAAAAAAMAAAAAAAkAAAAAAAMAAAAKAAoAAAAFAAQAAAAAAAoAAAAAAAQAAAAKAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAABAAoAAAABAAQAAAACAAoAAAACAAQAAAADAAoAAAADAAQAAAAEAAoAAAAEAAQAAAAFAAoAAAABAAQAAAAGAAoAAAACAAQAAAAHAAoAAAADAAQAAAAJAAoAAAADAAQAAAAIAAoAAAADAAQAAAA=")
+tile_set = ExtResource("2_xiuev")
+
+[node name="DoorLeft" parent="." unique_id=408957288 instance=ExtResource("3_q3p62")]
+unique_name_in_owner = true
+position = Vector2(0, 64)
+
+[node name="Hitbox" type="CollisionShape2D" parent="DoorLeft" unique_id=1530077643]
+position = Vector2(9, 24)
+shape = SubResource("RectangleShape2D_m2g58")
+
+[node name="DoorRight" parent="." unique_id=286257101 instance=ExtResource("3_q3p62")]
+unique_name_in_owner = true
+position = Vector2(158, 64)
+
+[node name="Hitbox" type="CollisionShape2D" parent="DoorRight" unique_id=128709633]
+position = Vector2(9, 24)
+shape = SubResource("RectangleShape2D_8ykry")
+
+[node name="DoorUp" parent="." unique_id=1976363540 instance=ExtResource("3_q3p62")]
+unique_name_in_owner = true
+position = Vector2(64, 0)
+
+[node name="Hitbox" type="CollisionShape2D" parent="DoorUp" unique_id=1715116629]
+position = Vector2(24, 9)
+shape = SubResource("RectangleShape2D_sq8v1")
+
+[node name="DoorDown" parent="." unique_id=2039655850 instance=ExtResource("3_q3p62")]
+unique_name_in_owner = true
+position = Vector2(64, 158)
+
+[node name="Hitbox" type="CollisionShape2D" parent="DoorDown" unique_id=1423186603]
+position = Vector2(24, 9)
+shape = SubResource("RectangleShape2D_sdrft")
+
+[node name="RoomArea" type="Area2D" parent="." unique_id=154012041]
+unique_name_in_owner = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="RoomArea" unique_id=490916597]
+position = Vector2(88, 88)
+shape = SubResource("RectangleShape2D_4kfp2")
+
+[connection signal="body_entered" from="RoomArea" to="." method="_on_room_area_body_entered"]
