@@ -9,9 +9,9 @@ var inven = []
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var health_timer: Timer = $Timer
+@onready var health_timer: Timer = get_node("/root/Root/PlayerStats/HealthTimer")
 @onready var i_frame_cooldown: Timer = $IFrameCooldown
-@export var max_health_time: float = 20.0
+#@export var max_health_time: float = 20.0
 @export var current_form: Vampire_Forms = Vampire_Forms.HUMAN
 @export var speed = 1500
 
@@ -26,12 +26,13 @@ var projectile_scene = preload("res://scenes/projectile.tscn")
 
 func _ready() -> void:
 	add_to_group("player")
-	if RoomChangeGlobal.activate:
-		global_position = RoomChangeGlobal.player_pos
-		RoomChangeGlobal.activate = false
 
-	health_timer.wait_time = max_health_time
+	health_timer.wait_time = PlayerStats.health_time
 	health_timer.start()
+	
+	Events.level_cleared.connect(func(level):
+		PlayerStats.health_time = health_timer.time_left
+	)
 
 
 func _physics_process(delta):	
