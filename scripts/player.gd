@@ -57,6 +57,11 @@ func _physics_process(delta):
 		else:
 			move_and_slide()
 	
+	if get_relative_mouse_position().x < 0:
+		animated_sprite.flip_h = true
+	else:
+		animated_sprite.flip_h = false
+	
 func take_damage(hp):
 	if can_take_damage:
 		var current_left = health_timer.time_left
