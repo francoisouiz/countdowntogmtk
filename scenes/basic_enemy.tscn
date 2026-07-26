@@ -65,3 +65,4 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_72ghi")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]

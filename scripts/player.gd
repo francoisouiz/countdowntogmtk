@@ -5,10 +5,12 @@ enum Vampire_Forms {HUMAN, BAT}
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_timer: Timer = $Timer
-@export var max_health_time: float = 5
+@onready var i_frame_cooldown: Timer = $IFrameCooldown
+@export var max_health_time: float = 150
 @export var current_form: Vampire_Forms = Vampire_Forms.HUMAN
 @export var speed = 3000
-@export var hp = 100
+
+var can_take_damage = true
 
 var diff_sec = 0
 var press_time = 0
@@ -40,14 +42,19 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func take_damage(hp):
-	var current_left = health_timer.time_left
-	var new_time = max(0.0, current_left - hp)
-	
-	if new_time > 0:
-		health_timer.start(new_time)
-	else:
-		health_timer.stop()
-		ded()
+	if can_take_damage:
+		var current_left = health_timer.time_left
+		var new_time = max(0.0, current_left - hp)
+		
+		if new_time > 0:
+			health_timer.start(new_time)
+		else:
+			health_timer.stop()
+			ded()
+		
+		can_take_damage = false
+		i_frame_cooldown.start()
+		
 		
 func ded():
 	queue_free()
@@ -79,4 +86,7 @@ func shoot() -> void:
 		proj.set_velocity_components(mouse_coordinates)
 		proj.position = position
 		
-		get_node("/root/Root/PlayerProjectiles").add_child(proj)
+		get_node("../PlayerProjectiles").add_child(proj)
+
+func _on_i_frame_cooldown_timeout() -> void:
+	can_take_damage = true
