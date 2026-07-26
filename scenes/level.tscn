@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ddrvv3rfwotq6" path="res://scripts/level.gd" id="1_2q6dc"]
 [ext_resource type="Script" uid="uid://oc802r51uy18" path="res://scripts/camera.gd" id="2_w7c3h"]
-[ext_resource type="Script" uid="uid://cbs7tbr87e8pb" path="res://scripts/enemy_manager.gd" id="3_w8frs"]
 
 [node name="Level" type="Node2D" unique_id=1236090623]
 script = ExtResource("1_2q6dc")
@@ -13,10 +12,7 @@ position_smoothing_enabled = true
 script = ExtResource("2_w7c3h")
 
 [node name="Enemies" type="Node" parent="." unique_id=1571686863]
-script = ExtResource("3_w8frs")
 
 [node name="BloodDrops" type="Node" parent="." unique_id=1550726003]
 
 [node name="PlayerProjectiles" type="Node" parent="." unique_id=2098990834]
-
-[connection signal="child_entered_tree" from="Enemies" to="Enemies" method="_on_new_enemy"]
