@@ -1,41 +1,27 @@
 [gd_scene format=3 uid="uid://dtj2j7id5rrgf"]
 
-[ext_resource type="Texture2D" uid="uid://ceyfirorvvyc7" path="res://assets/temp_icons/slime_purple.png" id="1_3i4hm"]
 [ext_resource type="Script" uid="uid://bcet7ypa3gwlv" path="res://scripts/basic_enemy.gd" id="1_md22f"]
+[ext_resource type="Texture2D" uid="uid://ctkeds75ya5l4" path="res://assets/sprites/enemy_sprite.png" id="2_md22f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k6aki"]
-size = Vector2(8, 10)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_md22f"]
-atlas = ExtResource("1_3i4hm")
-region = Rect2(0, 24, 24, 24)
+size = Vector2(4, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fn5nn"]
-atlas = ExtResource("1_3i4hm")
-region = Rect2(24, 24, 24, 24)
+atlas = ExtResource("2_md22f")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cuegt"]
-atlas = ExtResource("1_3i4hm")
-region = Rect2(48, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wm70f"]
-atlas = ExtResource("1_3i4hm")
-region = Rect2(72, 24, 24, 24)
+atlas = ExtResource("2_md22f")
+region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k6aki"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_md22f")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_fn5nn")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cuegt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wm70f")
 }],
 "loop": 1,
 "name": &"default",
@@ -43,7 +29,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_72ghi"]
-size = Vector2(10, 12)
+size = Vector2(6, 12)
 
 [node name="BasicEnemy" type="CharacterBody2D" unique_id=1807508245]
 collision_layer = 2
@@ -51,12 +37,11 @@ collision_mask = 7
 script = ExtResource("1_md22f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=234008271]
-visible = false
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_k6aki")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=437207906]
-position = Vector2(0, -7)
+position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_k6aki")
 autoplay = "default"
 
