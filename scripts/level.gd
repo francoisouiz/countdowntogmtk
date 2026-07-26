@@ -2,7 +2,7 @@ extends Node2D
 
 const DIMENSIONS: Vector2i = Vector2i(7, 5)
 
-@export var number_of_rooms: int = 5
+@export var _number_of_rooms: int = 10
 
 @onready var start_room = preload("res://scenes/rooms/start_room.tscn")
 @onready var normal_room = preload("res://scenes/rooms/normal_room.tscn")
@@ -12,23 +12,13 @@ enum RoomType { START, NORMAL, SPECIAL }
 
 var rooms: Array[Array] = []
 var start: Vector2i = DIMENSIONS / 2
-var number_of_rooms_cleared = 0
-var cleared: bool = false
-var level_number: int
 
 func _ready() -> void:
 	_initialize_rooms()
-	_create_rooms(start, number_of_rooms)
+	_create_rooms(start, _number_of_rooms)
 	_set_connections()
 	_print_level()
 	_instantiate_rooms()
-	
-	Events.room_cleared.connect(func(room):
-		number_of_rooms_cleared += 1
-		if number_of_rooms_cleared == number_of_rooms:
-			cleared = true
-			Events.level_cleared.emit(self)
-	)
 
 func _print_level() -> void:
 	"""for debugging"""
@@ -128,10 +118,10 @@ func _instantiate_rooms() -> void:
 			match rooms[i][j]["type"]:
 				RoomType.START: 
 					room_instance = start_room.instantiate()
-					room_instance.clear()
 					player_instance = player.instantiate()
 					player_instance.position = (Vector2(11 * i, 11 * j) + Vector2(Room.DIMENSIONS) / 2) * 16
 					player_instance.z_index = 10
+					
 				RoomType.NORMAL: room_instance = normal_room.instantiate()
 				RoomType.SPECIAL: continue
 				_: continue
@@ -144,4 +134,3 @@ func _instantiate_rooms() -> void:
 			add_child(room_instance)
 			if rooms[i][j]["type"] == RoomType.START:
 				add_child(player_instance)
-				
