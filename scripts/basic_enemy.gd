@@ -14,14 +14,14 @@ func _ready() -> void:
 
 func move(delta) -> void:
 	if player:
-		var components = (player.position-position).normalized()
+		var components = (player.global_position-global_position).normalized()
 		
 		velocity = SPEED * components
 		move_and_slide()
 
 func die() -> void:
 	var drop = blood_drop_scene.instantiate()
-	drop.position = position
+	drop.position = global_position
 	get_node("../../BloodDrops").call_deferred("add_child", drop)
 	
 	queue_free()
