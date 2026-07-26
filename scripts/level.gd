@@ -1,4 +1,5 @@
 extends Node2D
+class_name Level
 
 const DIMENSIONS: Vector2i = Vector2i(7, 5)
 
