@@ -28,12 +28,18 @@ var projectile_scene = preload("res://scenes/projectile.tscn")
 
 func _ready() -> void:
 	add_to_group("player")
-
+	
+	inven = PlayerStats.inventory
 	health_timer.wait_time = PlayerStats.health_time
 	health_timer.start()
 	
 	Events.level_cleared.connect(func(level):
 		PlayerStats.health_time = health_timer.time_left
+		PlayerStats.inventory = inven
+	)
+	
+	Events.room_entered.connect(func(room):
+		curr_vel = Vector2()
 	)
 
 
@@ -46,8 +52,9 @@ func _physics_process(delta):
 	if diff_sec == 0:
 		current_form = Vampire_Forms.HUMAN
 	if velocity != Vector2():
-		animation_player.play("transform_to_human")
-		human.emit()
+		if velocity.length() < 100:
+			animation_player.play("transform_to_human")
+			human.emit()
 	if health_timer.time_left <= 0:
 		ded()
 	velocity = curr_vel.normalized() * diff_sec * speed
@@ -79,6 +86,9 @@ func take_damage(hp):
 		
 		can_take_damage = false
 		i_frame_cooldown.start()
+		
+func _on_enter_timeout():
+	curr_vel = Vector2()
 		
 		
 		
@@ -154,5 +164,5 @@ func _on_animation_finished(anim_name: StringName) -> void:
 	#implies one of the transforms ended
 	if anim_name == "transform_to_bat":
 		animation_player.play("fly")
-	elif  anim_name == "transform_to_human":
+	elif anim_name == "transform_to_human":
 		animation_player.play("idle")
