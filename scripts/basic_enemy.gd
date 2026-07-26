@@ -4,7 +4,7 @@ class_name Enemy
 var player: Player
 var found_player = false
 var blood_drop_scene = preload("res://scenes/blood_drop.tscn")
-var _can_damage = false
+var _touching_player = false
 
 @export var damage = 10.0
 var SPEED = 30.0
@@ -35,13 +35,13 @@ func _process(delta: float) -> void:
 	pass
 
 func damage_player() -> void:
-	if _can_damage:
+	if _touching_player:
 		player.take_damage(damage)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body in get_tree().get_nodes_in_group("player"):
-		_can_damage = true
+		_touching_player = true
 
 func _on_body_exited(body: Node2D) -> void:
 	if body in get_tree().get_nodes_in_group("player"):
-		_can_damage = false
+		_touching_player = false

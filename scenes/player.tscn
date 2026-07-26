@@ -82,3 +82,5 @@ autostart = true
 
 [node name="IFrameCooldown" type="Timer" parent="." unique_id=150136337]
 one_shot = true
+
+[connection signal="timeout" from="IFrameCooldown" to="." method="_on_i_frame_cooldown_timeout"]

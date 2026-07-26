@@ -10,6 +10,8 @@ enum Vampire_Forms {HUMAN, BAT}
 @export var current_form: Vampire_Forms = Vampire_Forms.HUMAN
 @export var speed = 3000
 
+var can_take_damage = true
+
 var diff_sec = 0
 var press_time = 0
 var final_mouse = Vector2()
@@ -40,7 +42,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func take_damage(hp):
-	if i_frame_cooldown.is_stopped():
+	if can_take_damage:
 		var current_left = health_timer.time_left
 		var new_time = max(0.0, current_left - hp)
 		
@@ -50,6 +52,7 @@ func take_damage(hp):
 			health_timer.stop()
 			ded()
 		
+		can_take_damage = false
 		i_frame_cooldown.start()
 		
 		
@@ -84,3 +87,6 @@ func shoot() -> void:
 		proj.position = position
 		
 		get_node("../PlayerProjectiles").add_child(proj)
+
+func _on_i_frame_cooldown_timeout() -> void:
+	can_take_damage = true
