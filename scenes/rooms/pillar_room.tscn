@@ -1,0 +1,99 @@
+[gd_scene format=4 uid="uid://dsldkfsnten8g"]
+
+[ext_resource type="Script" uid="uid://lueu0lcodtf7" path="res://scripts/room.gd" id="1_8v5c8"]
+[ext_resource type="Script" uid="uid://d3w68yq6gqsim" path="res://scripts/enemy_handler.gd" id="2_vfli6"]
+[ext_resource type="TileSet" uid="uid://yu00tegvmx2i" path="res://assets/RoomTileset.res" id="3_h52na"]
+[ext_resource type="PackedScene" uid="uid://ctai6blx00v2j" path="res://scenes/door.tscn" id="4_d5rm1"]
+[ext_resource type="PackedScene" uid="uid://baf7rlehlx8vt" path="res://scenes/door_textures/door_left_texture.tscn" id="5_ha6yb"]
+[ext_resource type="PackedScene" uid="uid://7nevirhoi4so" path="res://scenes/door_textures/door_right_texture.tscn" id="6_xmdiv"]
+[ext_resource type="PackedScene" uid="uid://d3t5qv5c276n" path="res://scenes/door_textures/door_up_texture.tscn" id="7_c7dlp"]
+[ext_resource type="PackedScene" uid="uid://b762jqxh0mkhr" path="res://scenes/door_textures/door_down_texture.tscn" id="8_qt5gf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2g58"]
+size = Vector2(18, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ykry"]
+size = Vector2(18, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sq8v1"]
+size = Vector2(48, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdrft"]
+size = Vector2(48, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4kfp2"]
+size = Vector2(152, 152)
+
+[node name="PillarRoom" type="Node2D" unique_id=1831833429]
+script = ExtResource("1_8v5c8")
+
+[node name="EnemyHandler" type="Node" parent="." unique_id=638108298]
+script = ExtResource("2_vfli6")
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=2090668736]
+tile_map_data = PackedByteArray("AAABAAEAAAABAAEAAAABAAIAAAABAAIAAAABAAMAAAABAAIAAAACAAEAAAACAAEAAAADAAEAAAACAAEAAAAEAAEAAAACAAEAAAAFAAEAAAACAAEAAAAGAAEAAAACAAEAAAABAAQAAAABAAIAAAABAAUAAAABAAIAAAABAAYAAAABAAIAAAAHAAEAAAACAAEAAAAIAAEAAAACAAEAAAAJAAEAAAADAAEAAAAJAAIAAAADAAIAAAAJAAMAAAADAAIAAAAJAAQAAAADAAIAAAAJAAUAAAADAAIAAAAJAAYAAAADAAIAAAABAAcAAAABAAIAAAABAAgAAAABAAIAAAABAAkAAAABAAMAAAACAAkAAAACAAMAAAADAAkAAAACAAMAAAAEAAkAAAACAAMAAAAFAAkAAAACAAMAAAAGAAkAAAACAAMAAAAHAAkAAAACAAMAAAAIAAkAAAACAAMAAAAJAAcAAAADAAIAAAAJAAgAAAADAAIAAAAJAAkAAAADAAMAAAACAAIAAAACAAIAAAACAAMAAAACAAIAAAACAAQAAAACAAIAAAACAAUAAAACAAIAAAACAAYAAAACAAIAAAADAAYAAAACAAIAAAADAAcAAAACAAIAAAADAAgAAAACAAIAAAACAAgAAAACAAIAAAACAAcAAAACAAIAAAADAAUAAAACAAIAAAADAAQAAAACAAIAAAADAAMAAAACAAIAAAADAAIAAAACAAIAAAAEAAIAAAACAAIAAAAFAAIAAAACAAIAAAAGAAIAAAACAAIAAAAHAAIAAAACAAIAAAAHAAMAAAACAAIAAAAIAAMAAAACAAIAAAAIAAQAAAACAAIAAAAIAAUAAAACAAIAAAAIAAYAAAACAAIAAAAIAAIAAAACAAIAAAAIAAcAAAACAAIAAAAIAAgAAAACAAIAAAAHAAgAAAACAAIAAAAGAAgAAAACAAIAAAAFAAgAAAACAAIAAAAEAAgAAAACAAIAAAAEAAcAAAACAAIAAAAEAAMAAAACAAIAAAAFAAMAAAACAAIAAAAFAAcAAAACAAIAAAAGAAcAAAACAAIAAAAHAAYAAAACAAIAAAAHAAUAAAACAAIAAAAHAAQAAAACAAIAAAAGAAMAAAACAAIAAAAHAAcAAAACAAIAAAAGAAQAAAACAAIAAAAFAAQAAAACAAIAAAAEAAQAAAACAAIAAAAEAAUAAAACAAIAAAAEAAYAAAACAAIAAAAFAAYAAAACAAIAAAAGAAYAAAACAAIAAAAGAAUAAAACAAIAAAAFAAUAAAACAAIAAAA=")
+tile_set = ExtResource("3_h52na")
+
+[node name="Walls" type="TileMapLayer" parent="." unique_id=1005089133]
+tile_map_data = PackedByteArray("AAABAAAAAAABAAAAAAACAAAAAAACAAAAAAADAAAAAAADAAAAAAAEAAAAAAABAAAAAAAFAAAAAAACAAAAAAAGAAAAAAADAAAAAAAHAAAAAAABAAAAAAAIAAAAAAACAAAAAAAJAAAAAAADAAAAAAAKAAEAAAAEAAEAAAAKAAIAAAAEAAIAAAAKAAMAAAAEAAMAAAAKAAcAAAAEAAEAAAAKAAgAAAAEAAIAAAAKAAkAAAAEAAMAAAAKAAYAAAAEAAMAAAAKAAUAAAAEAAIAAAAKAAQAAAAEAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAMAAAAAAAQAAAAAAAEAAAAAAAUAAAAAAAIAAAAAAAYAAAAAAAMAAAAAAAcAAAAAAAEAAAAAAAgAAAAAAAIAAAAAAAkAAAAAAAMAAAAKAAoAAAAEAAQAAAAAAAoAAAAAAAQAAAAKAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAABAAoAAAABAAQAAAACAAoAAAACAAQAAAADAAoAAAADAAQAAAAEAAoAAAABAAQAAAAFAAoAAAACAAQAAAAGAAoAAAADAAQAAAAHAAoAAAABAAQAAAAJAAoAAAADAAQAAAAIAAoAAAACAAQAAAAHAAMAAAADAAAAAAADAAMAAAADAAAAAAADAAcAAAADAAAAAAAHAAcAAAADAAAAAAAFAAUAAAADAAAAAAA=")
+tile_set = ExtResource("3_h52na")
+
+[node name="DoorLeft" parent="." unique_id=408957288 instance=ExtResource("4_d5rm1")]
+unique_name_in_owner = true
+position = Vector2(0, 64)
+collision_mask = 5
+
+[node name="DoorTexture" parent="DoorLeft" unique_id=752599772 instance=ExtResource("5_ha6yb")]
+
+[node name="Hitbox" type="CollisionShape2D" parent="DoorLeft" unique_id=1530077643]
+visible = false
+position = Vector2(9, 24)
+shape = SubResource("RectangleShape2D_m2g58")
+
+[node name="DoorRight" parent="." unique_id=286257101 instance=ExtResource("4_d5rm1")]
+unique_name_in_owner = true
+position = Vector2(160, 64)
+collision_mask = 5
+
+[node name="DoorTexture" parent="DoorRight" unique_id=1390994012 instance=ExtResource("6_xmdiv")]
+
+[node name="Hitbox" type="CollisionShape2D" parent="DoorRight" unique_id=128709633]
+visible = false
+position = Vector2(7, 24)
+shape = SubResource("RectangleShape2D_8ykry")
+
+[node name="DoorUp" parent="." unique_id=1976363540 instance=ExtResource("4_d5rm1")]
+unique_name_in_owner = true
+position = Vector2(64, 0)
+collision_mask = 5
+
+[node name="DoorTexture" parent="DoorUp" unique_id=1189214712 instance=ExtResource("7_c7dlp")]
+
+[node name="Hitbox" type="CollisionShape2D" parent="DoorUp" unique_id=1715116629]
+visible = false
+position = Vector2(24, 9)
+shape = SubResource("RectangleShape2D_sq8v1")
+
+[node name="DoorDown" parent="." unique_id=2039655850 instance=ExtResource("4_d5rm1")]
+unique_name_in_owner = true
+position = Vector2(64, 160)
+collision_mask = 5
+
+[node name="DoorTexture" parent="DoorDown" unique_id=2001313918 instance=ExtResource("8_qt5gf")]
+
+[node name="Hitbox" type="CollisionShape2D" parent="DoorDown" unique_id=1423186603]
+visible = false
+position = Vector2(24, 7)
+shape = SubResource("RectangleShape2D_sdrft")
+
+[node name="RoomArea" type="Area2D" parent="." unique_id=154012041]
+unique_name_in_owner = true
+visible = false
+collision_mask = 5
+
+[node name="Hitbox" type="CollisionShape2D" parent="RoomArea" unique_id=490916597]
+position = Vector2(88, 88)
+shape = SubResource("RectangleShape2D_4kfp2")
+
+[connection signal="body_entered" from="RoomArea" to="." method="_on_room_area_body_entered"]
+[connection signal="body_entered" from="RoomArea" to="EnemyHandler" method="_on_room_area_body_entered"]

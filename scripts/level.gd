@@ -6,15 +6,19 @@ const DIMENSIONS: Vector2i = Vector2i(7, 5)
 
 @onready var start_room = preload("res://scenes/rooms/start_room.tscn")
 @onready var normal_room = preload("res://scenes/rooms/normal_room.tscn")
+@onready var pillar_room = preload("res://scenes/rooms/pillar_room.tscn")
+@onready var corridor_room = preload("res://scenes/rooms/corridor_room.tscn")
 @onready var player = preload("res://scenes/player.tscn")
 
-enum RoomType { START, NORMAL, SPECIAL }
+enum RoomType { START, NORMAL, PILLAR, CORRIDOR, SPECIAL }
+var randomizable_rooms = [RoomType.NORMAL, RoomType.PILLAR, RoomType.CORRIDOR]
 
 var rooms: Array[Array] = []
 var start: Vector2i = DIMENSIONS / 2
 var number_of_rooms_cleared = 0
 var cleared: bool = false
 var level_number: int
+
 
 func _ready() -> void:
 	_initialize_rooms()
@@ -82,7 +86,7 @@ func _create_rooms(current: Vector2i, length: int) -> bool:
 		if _inbounds(current + direction) and rooms[current.x + direction.x][current.y + direction.y] == null:
 			rooms[current.x][current.y][direction] = true
 			current += direction
-			rooms[current.x][current.y] = {"type": RoomType.NORMAL}
+			rooms[current.x][current.y] = {"type": randomizable_rooms.pick_random()}
 			rooms[current.x][current.y][-direction] = true
 			if _create_rooms(current, length - 1):
 				return true
@@ -133,6 +137,8 @@ func _instantiate_rooms() -> void:
 					player_instance.position = (Vector2(11 * i, 11 * j) + Vector2(Room.DIMENSIONS) / 2) * 16
 					player_instance.z_index = 10
 				RoomType.NORMAL: room_instance = normal_room.instantiate()
+				RoomType.PILLAR: room_instance = pillar_room.instantiate()
+				RoomType.CORRIDOR: room_instance = corridor_room.instantiate()
 				RoomType.SPECIAL: continue
 				_: continue
 			
