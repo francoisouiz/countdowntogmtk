@@ -30,9 +30,6 @@ func die() -> void:
 	
 	queue_free()
 
-func _ready() -> void:
-	add_to_group("enemies")
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not found_player and not player:

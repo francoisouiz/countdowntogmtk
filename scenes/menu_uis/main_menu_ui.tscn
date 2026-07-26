@@ -20,13 +20,30 @@ offset_top = -8.0
 offset_right = 1161.0
 offset_bottom = 657.0
 
-[node name="PlayButton" type="Button" parent="." unique_id=1471701799]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=938889266]
 layout_mode = 0
-offset_left = 544.0
-offset_top = 320.0
-offset_right = 666.0
-offset_bottom = 388.0
+offset_left = 267.0
+offset_top = 112.0
+offset_right = 878.0
+offset_bottom = 533.0
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=1382876447]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "COUNT DOWN"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=370174265]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 100
+
+[node name="PlayButton" type="Button" parent="VBoxContainer/MarginContainer" unique_id=1471701799]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
 text = "PLAY"
 script = SubResource("GDScript_ekxnf")
 
-[connection signal="button_down" from="PlayButton" to="." method="_on_play_button_click"]
+[connection signal="button_down" from="VBoxContainer/MarginContainer/PlayButton" to="." method="_on_play_button_click"]
